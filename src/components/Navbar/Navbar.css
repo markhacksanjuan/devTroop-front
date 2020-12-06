@@ -11,7 +11,8 @@
     width: 30%
 }
 .navbar a {
-    color: rgb(83, 132, 177);
+    color: rgb(61, 137, 208);
     text-decoration: none;
     margin: 0 2%;
+    font-weight: 400;
 }

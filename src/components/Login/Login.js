@@ -7,8 +7,6 @@ class Login extends Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '',
-            lastName: '',
             email: '',
             password: ''
 
@@ -18,16 +16,15 @@ class Login extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault()
-        const { name, lastName, email, password } = this.state
+        const { email, password } = this.state
         
-        this.service.signup(name, lastName, email, password)
+        this.service.login(email, password)
         .then( response => {
             this.setState({
-                name: '',
-                lastName: '',
                 email: '',
                 password: ''
             })
+            this.props.getUser(response)
         })
         .catch( err => console.error(err) )
     }
@@ -47,6 +44,8 @@ class Login extends Component {
                     <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
                     <label>Password:</label>
                     <input type='text' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
+
+                    <button type='submit'>Login</button>
                 </form>
                 <p>
                     ¿Aún no formas parte de devTroop? <Link to={'/signup'}>¡Regístrate!</Link>
