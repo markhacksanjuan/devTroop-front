@@ -1,0 +1,17 @@
+.navbar {
+    background-color: rgb(80, 80, 80);
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%
+}
+.navbar div {
+    width: 30%
+}
+.navbar a {
+    color: rgb(83, 132, 177);
+    text-decoration: none;
+    margin: 0 2%;
+}
