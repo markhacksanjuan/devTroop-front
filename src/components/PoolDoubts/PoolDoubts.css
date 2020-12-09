@@ -1,0 +1,24 @@
+.doubts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.doubt-answers {
+    display: flex;
+    flex-direction: column;
+}
+.pool-doubts {
+    height: 100%;
+}
+
+ /* ---MEDIA QUERY FOR IPHONE 5--- */
+@media (max-width: 320px){
+    .pool-doubts {
+        width: 320px;
+    }
+    .pool-doubts h1 {
+        text-align: center;
+        width: 320px;
+    }
+}

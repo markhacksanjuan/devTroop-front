@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 import AuthService from '../../auth/auth-service'
 
-class navbar extends Component {
+class Navbar extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -62,4 +62,4 @@ class navbar extends Component {
     }
 }
 
-export default navbar
+export default Navbar

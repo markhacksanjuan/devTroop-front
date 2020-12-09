@@ -4,3 +4,9 @@
   color:white
 }
 
+/* MEDIA QUERY FOR IPHONE 5 */
+@media (max-width: 320px){
+  .App {
+    width: 100%;
+  }
+}
