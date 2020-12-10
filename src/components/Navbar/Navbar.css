@@ -5,7 +5,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%
+    padding: 0 5%;
+    border-bottom: 1px solid white
 }
 .navbar div {
     width: 30%
@@ -14,7 +15,10 @@
     color: #4fb8fe;
     text-decoration: none;
     margin: 0 2%;
-    font-weight: 400;
+    font-weight: 700;
+}
+.navbar a:hover{
+    color: #8ad0ff
 }
 .nav-home {
     display: flex;

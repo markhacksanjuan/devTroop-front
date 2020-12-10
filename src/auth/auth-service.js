@@ -4,6 +4,7 @@ class AuthService {
     constructor() {
         let service = axios.create({
             baseURL: 'https://devtroop.herokuapp.com/auth',
+            // baseURL: 'http://localhost:3000/auth',
             withCredentials: true
         })
         this.service = service

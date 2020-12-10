@@ -60,6 +60,13 @@ class App extends Component {
   
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/pool' component={PoolDoubt} />
+              <Route exact path='/message' render={() => {
+                return (
+                  <Message loggedInUser={this.state.loggedInUser} />
+                )
+              }} />
+              <Route exact path='/profile' component={Perfil} />
           </Switch>
         </div>
       )
@@ -85,8 +92,6 @@ class App extends Component {
               }} />
               <Route exact path='/verification' component={Verification} />
               <Route exact path='/pool' component={PoolDoubt} />
-              <Route exact path='/message' component={Message} />
-              <Route exact path='/profile' component={Perfil} />
           </Switch>
         </div>
       )

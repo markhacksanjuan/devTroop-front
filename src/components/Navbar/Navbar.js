@@ -32,8 +32,11 @@ class Navbar extends Component {
         if(this.state.loggedInUser){
             return(
                 <div className='navbar'>
-                    <div>
+                    <div className='nav-home'>
+                        <Link to='/'><img src={devTroop} /></Link>
+                        <Link to='/profile'>Perfil</Link>
                         <Link to='/pool'>Dudas</Link>
+                        <Link to='/message'>IronXat</Link>
                     </div>
                     <div>
                         <p>Hola, {this.state.loggedInUser.name}</p>
@@ -51,9 +54,7 @@ class Navbar extends Component {
                 <div className='navbar'>
                     <div className='nav-home'>
                         <Link to='/'><img src={devTroop} /></Link>
-                        <Link to='/profile'>Perfil</Link>
                         <Link to='/pool'>Dudas</Link>
-                        <Link to='/message'>IronXat</Link>
                     </div>
                     <div>
                     <Link to='/signup'>Sign Up</Link>
