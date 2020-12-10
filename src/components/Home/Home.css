@@ -5,6 +5,6 @@
     font-weight: 200;
 }
 .home img {
-    width: 50%;
+    max-width: 477px;
     margin: 2rem 0;
 }
