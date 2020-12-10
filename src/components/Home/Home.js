@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
-import devTroop from '../../devTroop.png'
+import devTroop from '../../img/devTroopv2.png'
 
 const home = () => {
     return(

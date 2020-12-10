@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 import AuthService from '../../auth/auth-service'
 
-import devTroop from '../../devTroop.png'
+import devTroop from '../../img/devtroopbucle.gif'
 
 class Navbar extends Component {
     constructor(props){

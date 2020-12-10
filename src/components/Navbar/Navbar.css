@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgb(165, 165, 165);
+    background-color: rgb(26, 26, 26);
     height: 55px;
     display: flex;
     flex-direction: row;
@@ -11,7 +11,7 @@
     width: 30%
 }
 .navbar a {
-    color: rgb(61, 137, 208);
+    color: #4fb8fe;
     text-decoration: none;
     margin: 0 2%;
     font-weight: 400;
@@ -22,7 +22,7 @@
     align-items: center;
 }
 .nav-home img {
-    width: 40%;
+    width: 5rem;
     margin: 1rem 0;
     padding: .4rem 0
 }

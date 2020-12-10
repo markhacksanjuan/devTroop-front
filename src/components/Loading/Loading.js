@@ -1,5 +1,5 @@
 import React from 'react'
-import loadingImg from '../../loading.gif'
+import loadingImg from '../../img/devtroopbucle.gif'
 
 const loading = () => {
     return (
