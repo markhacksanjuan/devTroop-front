@@ -12,6 +12,8 @@ import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Verification from './components/Verification/Verification'
 import PoolDoubt from './components/PoolDoubts/PoolDoubts'
+import Message from './components/Message/Message'
+import Perfil from './components/Perfil/Perfil'
 
 class App extends Component {
 
@@ -83,6 +85,8 @@ class App extends Component {
               }} />
               <Route exact path='/verification' component={Verification} />
               <Route exact path='/pool' component={PoolDoubt} />
+              <Route exact path='/message' component={Message} />
+              <Route exact path='/profile' component={Perfil} />
           </Switch>
         </div>
       )

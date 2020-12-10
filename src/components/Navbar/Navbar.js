@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 import AuthService from '../../auth/auth-service'
 
+import devTroop from '../../devTroop.png'
+
 class Navbar extends Component {
     constructor(props){
         super(props)
@@ -47,9 +49,11 @@ class Navbar extends Component {
         }else {
             return(
                 <div className='navbar'>
-                    <div>
-                        <Link to='/'>HOME</Link>
+                    <div className='nav-home'>
+                        <Link to='/'><img src={devTroop} /></Link>
+                        <Link to='/profile'>Perfil</Link>
                         <Link to='/pool'>Dudas</Link>
+                        <Link to='/message'>IronXat</Link>
                     </div>
                     <div>
                     <Link to='/signup'>Sign Up</Link>

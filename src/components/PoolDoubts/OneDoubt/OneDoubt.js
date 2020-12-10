@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-const OneDoubt = () => {
+const OneDoubt = (props) => {
     return(
         <div>
-            <h3>Titulo Duda</h3>
-            <p>Esta es una duda cualquiera</p>
+            <h3>{props.selectedDoubt[0].title}</h3>
+            <p>{props.selectedDoubt[0].doubt}</p>
             <p>Escrita por alguien</p>
         </div>
     )

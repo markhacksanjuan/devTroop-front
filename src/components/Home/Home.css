@@ -1,6 +1,10 @@
 .home {
     height: 500px;
 }
-.home p{
+.home p {
     font-weight: 200;
+}
+.home img {
+    width: 50%;
+    margin: 2rem 0;
 }
