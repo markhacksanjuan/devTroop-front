@@ -1,0 +1,28 @@
+.footer {
+    background-color: rgb(26, 26, 26);
+    height: 55px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid white;
+}
+.footer a {
+    color: #4fb8fe;
+    text-decoration: none;
+    margin: 0 5%;
+    font-weight: 700;
+    display: block
+}
+.footer button {
+    background-color: transparent;
+    border: none;
+    color: #4fb8fe;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor:pointer;
+
+}

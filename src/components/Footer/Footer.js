@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
+import './Footer.css'
 import AuthService from '../../auth/auth-service'
 
-import devTroop from '../../img/devtroopbucle.gif'
-
-class Navbar extends Component {
-    constructor(props){
+class Footer extends Component {
+    constructor (props){
         super(props)
         this.state = {
             loggedInUser: null
         }
         this.service = new AuthService()
-
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -31,21 +28,18 @@ class Navbar extends Component {
 
         if(this.state.loggedInUser){
             return(
-                <div className='navbar'>
-                        <Link to='/profile'>Perfil</Link>
-                        <Link to='/pool'>Dudas</Link>
-                        <Link to='/message'>IronXat</Link>
-
+                <div className='footer'>
+                        <Link to='/'>
+                        <button onClick={() => this.logoutUser()}>Log Out</button>
+                        </Link>
                 </div>
             )
-
         }else {
             return(
-                <div className='navbar'>
-                    <div className='nav-home'>
-                        <Link to='/'><img src={devTroop} /></Link>
-                        <Link to='/pool'>Dudas</Link>
-                    </div>
+                <div className='footer'>
+                    <Link to='/signup'>Sign Up</Link>
+                    <Link to='/login'>Log In</Link>
+
                 </div>
             )
         }
@@ -53,4 +47,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar
+export default Footer

@@ -9,6 +9,7 @@ import DoubtService from '../../services/doubt-services'
 import DoubtList from './DoubtList/DoubtList'
 import OneDoubt from './OneDoubt/OneDoubt'
 import Answers from './Answers/Answers'
+import NewDoubt from './NewDoubt/NewDoubt'
 import Loading from '../Loading/Loading'
 
 class PoolDoubts extends Component {
@@ -19,7 +20,8 @@ class PoolDoubts extends Component {
             doubts: [],
             selectedDoubt: '',
             doubtUser: '',
-            doubtAnswers: ''
+            doubtAnswers: '',
+            showForm: false,
         }
         this.service = new DoubtService()
     }
@@ -49,12 +51,24 @@ class PoolDoubts extends Component {
             })
     }
 
+    showFormToggle = (e) => {
+        e.preventDefault()
+        this.state.showForm ? this.setState({showForm: false}) : this.setState({showForm: true})
+    }
+
 
 
     render = () => {
         return(
             <div className='pool-doubts'>
                 <h1>¡Hey! ¿Tienes alguna duda?</h1>
+                {this.props.loggedInUser && 
+                <button onClick={(e) => this.showFormToggle(e)}>Crea tu duda</button>
+                }
+                    <NewDoubt
+                        show={this.state.showForm}
+                        loggedInUser={this.props.loggedInUser}
+                    />
                 <div className='doubts'>
                 {this.state.doubts.length === 0 ? <Loading /> : <DoubtList 
                                         getDoubt={this.getDoubt}

@@ -3,19 +3,24 @@ import axios from 'axios'
 class DoubtService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://devtroop.herokuapp.com/doubt',
-            // baseURL: 'http://localhost:3000/doubt'
+            // baseURL: 'https://devtroop.herokuapp.com/doubt',
+            baseURL: 'http://localhost:3000/doubt'
         })
         this.service = service
     }
 
-    newDoubt = (title, doubt) => {
-        return this.service.post('/create', {title, doubt})
+    newDoubt = (title, doubt, userId) => {
+        return this.service.post('/create', {title, doubt, userId})
         .then(response => response.data)
         .catch(err => console.error(err))
     }
     getAllDoubts = () => {
         return this.service.get('/all')
+        .then(response => response.data)
+        .catch(err => console.error(err))
+    }
+    getDoubtsOfUser = (userId) => {
+        return this.service.get(`/all/${userId}`)
         .then(response => response.data)
         .catch(err => console.error(err))
     }

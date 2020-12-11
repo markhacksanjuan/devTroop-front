@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-const Doubts = () => {
+const Doubts = (props) => {
+
+    const renderDoubts = () => {
+        return props.doubts.map((doubt, index) => {
+            return (
+                <li key={index}>{doubt.title}</li>
+            )
+        })
+
+    }
+
     return (
         <div>
-            <h2>Dudas</h2>
             <Scrollbars style={{ width: 300, height: 200}}>
                 <ul>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
-                    <li>DUDA</li>
+                    {renderDoubts()}
                 </ul>
 
             </Scrollbars>

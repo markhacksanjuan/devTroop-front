@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AuthService from '../../auth/auth-service'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import './Login.css'
 
 class Login extends Component {
@@ -25,6 +25,7 @@ class Login extends Component {
                 password: ''
             })
             this.props.getUser(response)
+            this.props.history.push('/profile')
         })
         .catch( err => console.error(err) )
     }
@@ -55,4 +56,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default withRouter(Login)

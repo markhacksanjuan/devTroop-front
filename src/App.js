@@ -8,6 +8,7 @@ import AuthService from './auth/auth-service'
 // --- COMPONENTS ---
 import Home from './components/Home/Home'
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Verification from './components/Verification/Verification'
@@ -60,14 +61,26 @@ class App extends Component {
   
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/pool' component={PoolDoubt} />
+            <Route exact path='/pool' render={() => {
+              return (
+                <PoolDoubt loggedInUser={this.state.loggedInUser} />
+              )
+            }} />
               <Route exact path='/message' render={() => {
                 return (
                   <Message loggedInUser={this.state.loggedInUser} />
                 )
               }} />
-              <Route exact path='/profile' component={Perfil} />
+              <Route exact path='/profile' render={() => {
+                return (
+                  <Perfil loggedInUser={this.state.loggedInUser} />
+                )
+              }} />
           </Switch>
+          <Footer
+          userInSession={this.state.loggedInUser}
+          getUser={this.getTheUser}
+          />
         </div>
       )
     }else {
@@ -93,6 +106,10 @@ class App extends Component {
               <Route exact path='/verification' component={Verification} />
               <Route exact path='/pool' component={PoolDoubt} />
           </Switch>
+          <Footer
+          userInSession={this.state.loggedInUser}
+          getUser={this.getTheUser}
+          />
         </div>
       )
     }
