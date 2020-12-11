@@ -42,10 +42,8 @@ class Navbar extends Component {
         }else {
             return(
                 <div className='navbar'>
-                    <div className='nav-home'>
                         <Link to='/'><img src={devTroop} /></Link>
                         <Link to='/pool'>Dudas</Link>
-                    </div>
                 </div>
             )
         }

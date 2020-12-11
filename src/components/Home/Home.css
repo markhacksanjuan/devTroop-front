@@ -8,3 +8,48 @@
     max-width: 477px;
     margin: 2rem 0;
 }
+.home a{
+    display: block;
+    background-color: rgb(26,26,26);
+    width: 8rem;
+    height: 1rem;
+    margin: 1.1rem 0;
+    padding: .9rem;
+    border-radius: .3rem;
+    text-decoration: none;
+    color: #4fb8fe;
+    font-weight: 700;
+    border: 1px solid #4fb8fe
+
+}
+.home a:hover{
+    color: #8ad0ff;
+    background-color: rgb(70,70,70)
+}
+.home-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- MEDIA QUERY FOR IPHONE 5 */
+@media (max-width: 320px){
+    .home img {
+        max-width: 300px;
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 375px){
+    .home img {
+        max-width: 300px;
+        margin: 2rem 0;
+    }
+    .home p {
+        margin: 0 2rem;
+    }
+    .home h1 {
+        margin: 0 .2rem 1rem .2rem;
+    }
+}
