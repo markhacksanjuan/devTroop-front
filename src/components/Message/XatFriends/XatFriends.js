@@ -7,10 +7,17 @@ const XatFriends = (props) => {
     const renderFriends = () => {
         return props.friends.map((friend, index) => {
             return (
-                <li><button>{friend.name} {friend.lastName}</button></li>
+                <button onClick={(e) => handleClick(e, friend._id)}><li key={index}>{friend.name} {friend.lastName}</li></button>
             )
         })
     }
+
+    const handleClick = (e, id) => {
+        e.preventDefault()
+        props.getXatById(id)
+    }
+
+    
 
     return (
         <div>
