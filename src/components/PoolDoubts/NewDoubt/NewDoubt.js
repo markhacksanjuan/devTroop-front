@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './NewDoubt.css'
 
 import DoubtService from '../../../services/doubt-services'
 
@@ -34,13 +35,13 @@ class NewDoubt extends Component {
             return null
         }
         return (
-            <div>
+            <div className='new-doubt'>
                 <form onSubmit={(e) => this.createDoubt(e)}>
                     <label>Título: </label>
                     <input name='title' onChange={this.handleChange} value={this.state.title} />
                     <label>Tu duda:</label>
                     <textarea name='doubt' onChange={this.handleChange} value={this.state.doubt} />
-                    <input type='submit' value='enviar duda' />
+                    <button type='submit'>enviar duda</button>
                 </form>
     
             </div>

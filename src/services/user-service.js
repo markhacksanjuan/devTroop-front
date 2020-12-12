@@ -16,7 +16,7 @@ class UserService {
         } )
     }
     getUser = (userID) => {
-        return this.service.post('', {userID})
+        return this.service.post('/getOne', {userID})
         .then(response => {
             return response.data
         })
@@ -25,9 +25,15 @@ class UserService {
         return this.service.get('/allUsers')
         .then(response => {
             const users = response.data.map(user => {
-                return {name: user.name, lastName: user.lastName}
+                return {_id: user._id, name: user.name, lastName: user.lastName}
             })
             return  users
+        })
+    }
+    addFriend = (userId, friendID ) => {
+        return this.service.post('/add-new-friend', {userId, friendID})
+        .then(response => {
+            return response.data
         })
     }
 }

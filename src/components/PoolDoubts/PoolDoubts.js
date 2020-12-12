@@ -75,7 +75,7 @@ class PoolDoubts extends Component {
                                         doubts={this.state.doubts} />}
                     <div className='doubt-answers'>
                     {this.state.selectedDoubt === '' ? null : <OneDoubt 
-                            selectedDoubt={this.state.selectedDoubt}
+                            selectedDoubt={this.state.selectedDoubt[0]}
                         />}
                     {this.state.doubtAnswers === '' ? null : <Answers 
                             doubtAnswers={this.state.doubtAnswers}

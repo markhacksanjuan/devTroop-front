@@ -29,6 +29,9 @@ class DoubtService {
         .then(response => response.data)
         .catch(err => console.error(err))
     }
+    getUserFromDoubt = (id, userId) => {
+
+    }
     editOneDoubt = (id, title, doubt) => {
         return this.service.post(`/one/${id}`, {title, doubt})
         .then(response => response.data)

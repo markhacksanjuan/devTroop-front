@@ -15,13 +15,16 @@ import Verification from './components/Verification/Verification'
 import PoolDoubt from './components/PoolDoubts/PoolDoubts'
 import Message from './components/Message/Message'
 import Perfil from './components/Perfil/Perfil'
+import PerfilPublico from './components/PerfilPublico/PerfilPublico'
+import EditProfileForm from './components/EditProfileForm/EditProfileForm'
 
 class App extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      publicProfileId: ''
     }
     this.service = new AuthService()
   }
@@ -42,10 +45,15 @@ class App extends Component {
     }
   }
 
-
   getTheUser = (userObj) => {
     this.setState({
       loggedInUser: userObj
+    })
+  }
+
+  getProfilePublicId = (id) => {
+    this.setState({
+      publicProfileId: id
     })
   }
 
@@ -73,7 +81,23 @@ class App extends Component {
               }} />
               <Route exact path='/profile' render={() => {
                 return (
-                  <Perfil loggedInUser={this.state.loggedInUser} />
+                  <Perfil 
+                    loggedInUser={this.state.loggedInUser} 
+                    getProfilePublicId={this.getProfilePublicId}
+                  />
+                )
+              }} />
+              <Route exact path='/profile/:id' render={() => {
+                return (
+                  <PerfilPublico 
+                  loggedInUser={this.state.loggedInUser}
+                  publicProfileId={this.state.publicProfileId}
+                   />
+                )
+              }} />
+              <Route exact path='/editProfile' render={() => {
+                return (
+                  <EditProfileForm />
                 )
               }} />
           </Switch>

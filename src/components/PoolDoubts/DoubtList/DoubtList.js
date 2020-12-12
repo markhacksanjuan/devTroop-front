@@ -14,10 +14,11 @@ const DoubtList = (props) => {
     const renderList = () => {
         return props.doubts.map((doubt, index) => {
             return (
-                <button key={index} onClick={(e) => handleClick(e, doubt._id)} >
-                    <li>{doubt.title}</li>
-                </button>
-                 
+                <li>
+                    <button key={index} onClick={(e) => handleClick(e, doubt._id)} >
+                        {doubt.title}
+                    </button>
+                </li>
             )
         })
     }

@@ -4,3 +4,7 @@
 .answers ul {
     list-style: none;
 }
+.answers h3 {
+    color:#4fb8fe;
+    margin: 2rem 0 0 0;
+}

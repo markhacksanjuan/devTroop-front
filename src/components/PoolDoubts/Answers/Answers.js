@@ -15,6 +15,7 @@ const Answers = (props) => {
 
     return(
         <div class="answers">
+            <h3>Respuestas</h3>
             <Scrollbars style={{ width: 300, heigth: 50 }}>
                 <ul>
                     {renderAnswers()}

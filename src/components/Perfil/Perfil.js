@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import './Perfil.css'
 
 // --- SERVICES ---
 import UserService from '../../services/user-service'
@@ -10,6 +12,7 @@ import DoubtService from '../../services/doubt-services'
 import Friends from './Friends/Friends'
 import Doubts from './Doubts/Doubts'
 import SearchFriend from './SearchFriend/SearchFriend'
+import Info from './Info/Info'
 import Loading from '../Loading/Loading'
 
 
@@ -55,9 +58,10 @@ class Perfil extends Component {
     search = (value) => {
         value !== '' ? this.setState({searchDiv: true}) : this.setState({searchDiv: false})
         const copyFriends = [...this.state.newSearch]
+        const valueLower = value.toLowerCase()
         const newArr = copyFriends.filter(item => {
             const newName = item.name.toLowerCase()
-            return newName.includes(value)
+            return newName.includes(valueLower)
         })
         this.setState({
             searchFriends: newArr
@@ -65,18 +69,11 @@ class Perfil extends Component {
         if(value === ''){
             this.setState({searchFriends: copyFriends})
         }
-        return this.state.searchFriends.map((friend, index) => {
-            return(
-                <div>
-                    <p>{friend.name}</p>
-                </div>
-            )
-        })
     }
     renderSearchFriends = () => {
             return this.state.searchFriends.map((friend, index) => {
                 return (
-                    <p>{friend.name} {friend.lastName}</p>
+                    <Link key={index} to={`/profile/${friend._id}`} onClick={() => this.props.getProfilePublicId(friend._id)}>{friend.name} {friend.lastName}</Link>
                 )
             })
     }
@@ -84,8 +81,11 @@ class Perfil extends Component {
     render(){
 
         return (
-            <div>
-                <h1>{this.props.loggedInUser.name}, welcome back!</h1>
+            <div className='perfil'>
+                <h1>¡Hola, {this.props.loggedInUser.name}!</h1>
+                <Info 
+                    loggedInUser={this.props.loggedInUser}
+                    />
                 {this.state.doubts.length === 0 ? null : <Doubts 
                 doubts={this.state.doubts} />
                 }

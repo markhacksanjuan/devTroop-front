@@ -54,7 +54,7 @@ class Signup extends Component {
                     <label>Password:</label>
                     <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
 
-                    <input type='submit' value='Signup' />
+                    <button type='submit'>Regístrate</button>
                 </form>
                 <p>
                     ¿Tienes una cuenta en devTroop? <Link to={'/login'}>Login</Link>

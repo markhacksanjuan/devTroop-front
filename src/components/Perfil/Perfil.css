@@ -1,0 +1,18 @@
+.perfil {
+
+}
+.perfil a {
+    color: #4fb8fe;
+    text-decoration: none;
+    font-weight: 700;
+    display: block;
+    margin: .5rem 0 0 0;
+}
+.perfil a:hover {
+    color: #8ad0ff;
+}
+.perfil input {
+    height: 1.5rem;
+    border-radius: .3rem;
+    border: 1px solid #4fb8fe
+}

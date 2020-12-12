@@ -11,6 +11,21 @@
 .pool-doubts {
     height: 100%;
 }
+.pool-doubts > button {
+    height: 2.5rem;
+    width: 13rem;
+    background-color: rgb(26,26,26);
+    color: #4fb8fe;
+    border: 1px solid #4fb8fe;
+    margin: .2rem 0 2rem 0;
+    border-radius: .3rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+.pool-doubts > button:hover {
+    color: #8ad0ff;
+    background-color: rgb(70,70,70);
+}
 
  /* ---MEDIA QUERY FOR IPHONE 5--- */
 @media (max-width: 320px){

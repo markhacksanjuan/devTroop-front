@@ -18,17 +18,21 @@
     font-weight: 700;
 }
 .navbar a:hover{
-    color: #8ad0ff
+    color: #8ad0ff;
 }
 .nav-home {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.navbar img {
+#img-devtroop {
     width: 5rem;
     margin: 1rem 0;
     padding: .4rem 0
+}
+#img-user{
+    border-radius: 50%;
+    width: 2rem;
 }
 
 
