@@ -25,7 +25,7 @@ class Message extends Component {
         this.messageService = new MessageService()
     }
 
-    componentDidMount = (props) => {
+    componentDidMount = () => {
         this.service
         .getFriends(this.props.loggedInUser._id)
         .then(response => {
@@ -64,6 +64,16 @@ class Message extends Component {
             })
         })
         .catch(err => console.error(err))
+    }
+    updateXat = () => {
+        setInterval(() => {
+            this.messageService.getAll(this.props.loggedInUser._id)
+            .then(result => {
+                this.setState({
+                    allMessages: result
+                })
+            })
+        }, 1000);
     }
 
 

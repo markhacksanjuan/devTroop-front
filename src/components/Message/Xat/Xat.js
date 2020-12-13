@@ -34,7 +34,6 @@ class Xat extends Component {
     handleFormSubmit = (event) => {
         event.preventDefault()
         const { newMessage } = this.state
-        console.log(newMessage)
         this.props.createNewMessage(newMessage)
         this.setState({
             newMessage: ''
@@ -45,10 +44,7 @@ class Xat extends Component {
         const { name, value } = event.target
         this.setState({ [name]: value })
     }
-    
-    handleToUserId = () => {
 
-    }
 
     renderXat = () => {
         const xat = [...this.props.xat]
