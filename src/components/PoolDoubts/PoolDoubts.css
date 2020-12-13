@@ -1,7 +1,9 @@
 .doubts {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
 }
 .doubt-answers {
@@ -10,6 +12,7 @@
 }
 .pool-doubts {
     height: 100%;
+
 }
 .pool-doubts > button {
     height: 2.5rem;
@@ -25,6 +28,11 @@
 .pool-doubts > button:hover {
     color: #8ad0ff;
     background-color: rgb(70,70,70);
+}
+.container-doubt-answer {
+    display: flex;
+    flex-direction: row;
+    
 }
 
  /* ---MEDIA QUERY FOR IPHONE 5--- */

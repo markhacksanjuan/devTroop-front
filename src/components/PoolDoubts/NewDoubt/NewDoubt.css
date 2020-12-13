@@ -41,3 +41,9 @@
     color: #8ad0ff;
     background-color: rgb(70,70,70);
 }
+
+@media (max-width: 375px) {
+    .new-doubt form {
+        width: 70%
+    }
+}

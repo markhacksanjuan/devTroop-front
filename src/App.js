@@ -56,6 +56,16 @@ class App extends Component {
       publicProfileId: id
     })
   }
+  changeAvatar = (avatarUrl) => {
+    const copyUser = {...this.state.loggedInUser, imgPath:avatarUrl}
+    this.setState({
+      loggedInUser: copyUser
+    })
+  }
+  changeUserInfo = (userInfo) => {
+    const copyUser = {...this.state.loggedInUser, name: userInfo.name, lastName: userInfo.lastName}
+    this.setState({ loggedInUser: copyUser})
+  }
 
   render(){
     this.fetchUser()
@@ -97,7 +107,11 @@ class App extends Component {
               }} />
               <Route exact path='/editProfile' render={() => {
                 return (
-                  <EditProfileForm />
+                  <EditProfileForm 
+                    loggedInUser={this.state.loggedInUser}
+                    changeAvatar={this.changeAvatar}
+                    changeUserInfo={this.changeUserInfo}
+                  />
                 )
               }} />
           </Switch>

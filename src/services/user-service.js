@@ -36,6 +36,18 @@ class UserService {
             return response.data
         })
     }
+    editAvatar = (theFile, userId) => {
+        return this.service.post(`/editAvatar/${userId}`, theFile)
+        .then(response => {
+            return response.data
+        })
+    }
+    editUser = (userId, name, lastName) => {
+        return this.service.post('editUser', {userId, name, lastName})
+        .then(response => {
+            return response.data
+        })
+    }
 }
 
 export default UserService

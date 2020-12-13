@@ -1,18 +1,34 @@
 .perfil {
 
 }
-.perfil a {
+.perfil a, .perfil-body a {
     color: #4fb8fe;
     text-decoration: none;
     font-weight: 700;
     display: block;
     margin: .5rem 0 0 0;
 }
-.perfil a:hover {
+.perfil a:hover, .perfil-body a {
     color: #8ad0ff;
 }
 .perfil input {
     height: 1.5rem;
     border-radius: .3rem;
     border: 1px solid #4fb8fe
+}
+.perfil-head > img {
+    width: 200px;
+    border-radius: 50%;
+}
+.perfil-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.perfil-links a {
+    display: block
+}
+.perfil-body {
+    display: flex;
+    flex-direction: row;
 }

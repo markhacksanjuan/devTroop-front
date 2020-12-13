@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
 import './Perfil.css'
 
 // --- SERVICES ---
@@ -25,6 +25,9 @@ class Perfil extends Component {
             searchFriends: [],
             newSearch: [],
             searchDiv: false,
+            dudas: false,
+            friendsList: false,
+            info: true,
         }
         this.service = new UserService()
         this.messageService = new MessageService()
@@ -78,29 +81,54 @@ class Perfil extends Component {
             })
     }
 
+    showToggle = (e) => {
+        console.log(e.target.id)
+        this.state[e.target.id] ? this.setState({ [e.target.id]:false }) : this.setState({ [e.target.id]:true })
+    }
+
     render(){
 
         return (
             <div className='perfil'>
                 <h1>¡Hola, {this.props.loggedInUser.name}!</h1>
-                <Info 
-                    loggedInUser={this.props.loggedInUser}
-                    />
-                {this.state.doubts.length === 0 ? null : <Doubts 
-                doubts={this.state.doubts} />
-                }
                 <SearchFriend
                 search={this.search}
                 searchFriends={this.searchFriends}
                 searchDiv={this.state.searchDiv}
                 />
-                {this.state.searchDiv && this.renderSearchFriends()}
-                <div>
-                    {this.search}
+                
+                <div className='perfil-head'>
+                    <img src={this.props.loggedInUser.imgPath} />
+                    <div className='perfil-links'>
+                        <Link id='dudas' onClick={(e) => this.showToggle(e)}>Ver mis dudas</Link>
+                        <Link id='friendsList' onClick={(e) => this.showToggle(e)}>Ver mis amigos</Link>
+                        <Link id='info' onClick={(e) => this.showToggle(e)}>Ver mi información</Link>
+
+                    </div>
                 </div>
-                {this.state.friends.length === 0 ? null : <Friends
+                <div className='perfil-body'>
+                    
+                    {this.state.dudas && <Doubts 
+                    doubts={this.state.doubts} />
+                    }
+
+                 {this.state.friendsList && <Friends
                 friends={this.state.friends}
+                getProfilePublicId={this.props.getProfilePublicId}
                  />}
+                 
+                    {this.state.info &&
+                        <Info 
+                        loggedInUser={this.props.loggedInUser}
+                        />}
+                        <div>
+
+                            {this.state.searchDiv && this.renderSearchFriends()}
+                        </div>
+                </div>
+
+
+
             </div>
         )
     }

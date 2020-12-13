@@ -1,3 +1,11 @@
 .one-doubt h3 {
     color: #4fb8fe;   
 }
+.one-doubt a {
+    color: #4fb8fe;
+    text-decoration: none;
+    font-weight: 700;
+}
+.one-doubt a:hover {
+    color: #8ad0ff
+}

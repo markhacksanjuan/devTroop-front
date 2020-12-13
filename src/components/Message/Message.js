@@ -16,9 +16,10 @@ class Message extends Component {
         super(props)
         this.state = {
             friends: [],
-            toUserId: '',
+            toUser: '',
             xat: [],
             newMessage: '',
+            allMessages: ''
         }
         this.service = new UserService()
         this.messageService = new MessageService()
@@ -28,32 +29,39 @@ class Message extends Component {
         this.service
         .getFriends(this.props.loggedInUser._id)
         .then(response => {
-            this.setState({
-                friends: response
+            this.messageService.getAll(this.props.loggedInUser._id)
+            .then(result => {
+                this.setState({
+                    friends: response,
+                    allMessages: result
+                })
             })
         })
     }
-
     getXatById = (id) => {
         const toUser = this.state.friends.filter(item => {
             return item._id === id
         })
-        this.messageService
-            .getAllMessages(toUser[0]._id, this.props.loggedInUser._id)
-            .then(response => {
-                this.setState({
-                    toUserId: toUser[0]._id,
-                    xat: response
-                })
-            })
-        
+        const copyAllMessages = [...this.state.allMessages]
+        const messagesArr = copyAllMessages.filter(message => {
+            return message.toUserId.toString() === toUser[0]._id.toString() || message.fromUserId._id.toString() === toUser[0]._id.toString()
+        })
+        this.setState({
+            xat: messagesArr,
+            toUser: toUser[0]
+        })        
     }
-
     createNewMessage = (newMessage) => {
         this.messageService
-        .sendMessage(newMessage, this.state.toUserId, this.props.loggedInUser._id)
-        .then(response => {
-            this.getXatById(this.state.toUserId)
+        .sendMessage(newMessage, this.state.toUser._id, this.props.loggedInUser._id)
+        .then(() => {
+            this.messageService.getAll(this.props.loggedInUser._id)
+            .then(response => {
+                this.setState({
+                    allMessages: response
+                })
+                this.getXatById(this.state.toUser._id)
+            })
         })
         .catch(err => console.error(err))
     }
@@ -73,7 +81,7 @@ class Message extends Component {
                     </div>
                     <div>
                             {this.state.toUserId === '' ? <Loading /> : <Xat 
-                            toUserId={this.state.toUserId}
+                            toUser={this.state.toUser}
                             loggedInUser={this.props.loggedInUser}
                             createNewMessage={this.createNewMessage}
                             xat={this.state.xat}

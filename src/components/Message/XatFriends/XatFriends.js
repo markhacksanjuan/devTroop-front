@@ -7,7 +7,7 @@ const XatFriends = (props) => {
     const renderFriends = () => {
         return props.friends.map((friend, index) => {
             return (
-                <button onClick={(e) => handleClick(e, friend._id)}><li key={index}>{friend.name} {friend.lastName}</li></button>
+                <li key={index}><button onClick={(e) => handleClick(e, friend._id)}>{friend.name} {friend.lastName}</button></li>
             )
         })
     }
@@ -20,7 +20,7 @@ const XatFriends = (props) => {
     
 
     return (
-        <div>
+        <div className='xat-friend'>
             <Scrollbars style={{ width: 300, height: 300 }}>
                 <ul>
                     {renderFriends()}

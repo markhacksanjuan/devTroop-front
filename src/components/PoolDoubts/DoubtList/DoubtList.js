@@ -8,7 +8,6 @@ const DoubtList = (props) => {
     const handleClick = (e, id) => {
         e.preventDefault()
         props.getDoubt(id)
-
     }
 
     const renderList = () => {
@@ -25,7 +24,9 @@ const DoubtList = (props) => {
 
     return(
         <div className='doubt-list'>
-            <Scrollbars style={{ width: 300, heigth: 500 }}>
+        
+            <Scrollbars 
+            style={{ width: 300, heigth: 500 }}>
                 <ul>
                     {renderList()}
                 </ul>

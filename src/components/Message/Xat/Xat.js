@@ -13,7 +13,8 @@ class Xat extends Component {
         super(props)
         this.state = {
             newMessage: '',
-            xat: []
+            xat: [],
+            toUser: '',
         }
         this.MessageService = new MessageService()
         this.scrollbars = React.createRef()
@@ -21,7 +22,7 @@ class Xat extends Component {
 
     componentDidMount = () => {
         this.setState({
-            toUserId: this.props.toUserId,
+            toUser: this.props.toUser,
             xat: this.props.xat,
         })
     }
@@ -35,6 +36,9 @@ class Xat extends Component {
         const { newMessage } = this.state
         console.log(newMessage)
         this.props.createNewMessage(newMessage)
+        this.setState({
+            newMessage: ''
+        })
     }
 
     handleChange = (event) => {
@@ -48,30 +52,29 @@ class Xat extends Component {
 
     renderXat = () => {
         const xat = [...this.props.xat]
-        return (
-            xat.map((message,index) => {
-                return <li key={index}>{this.props.loggedInUser.name}: {message.message}</li>
+            return xat.map((message,index) => {
+                return <li key={index}><img src={message.fromUserId.imgPath} /> - {message.message}</li>
         })
-        ) 
+        
     }
 
     render() {
         return (
             <div className='xat'>
-                <div>
+                <div className='messages'>
                     <Scrollbars 
                     ref={this.scrollbars}
-                    style={{ width: 300, height: 300 }}>
+                    style={{ width: 300, height: 250 }}>
     
                         <ul>
-                    {this.state.xat.length === 0 ? <Loading /> : this.renderXat()}
+                    {this.props.toUser === '' ? <Loading /> : this.renderXat()}
                         </ul>
     
                     </Scrollbars>
                 </div>
                 <form onSubmit={this.handleFormSubmit}>
-                    <textarea name='newMessage' value={this.state.message} onChange={ e => this.handleChange(e) }></textarea>
-                    <input type='submit' value='enviar' />
+                    <textarea name='newMessage' value={this.state.newMessage} onChange={ e => this.handleChange(e) }></textarea>
+                    <button type='submit'>Enviar</button>
     
                 </form>
                 

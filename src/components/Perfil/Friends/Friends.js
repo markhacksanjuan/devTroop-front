@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
+import { Link } from 'react-router-dom'
 
 const Friends = (props) => {
 
     const renderFriends = () => {
         return props.friends.map((friend, index) => {
             return (
-                <li key={index}>{friend.name} {friend.lastName}</li>
+                <Link key={index} to={`/profile/${friend._id}`} onClick={() => props.getProfilePublicId(friend._id)}>{friend.name} {friend.lastName}</Link>
             )
         })
     }

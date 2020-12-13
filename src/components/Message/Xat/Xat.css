@@ -3,3 +3,48 @@
     flex-direction: column;
     align-items: center;
 }
+.xat li img {
+    border-radius: 50%;
+    width: 1rem;
+}
+.xat ul {
+    list-style: none;
+}
+.xat li {
+    margin: .5rem;
+    text-align: left;
+}
+.xat form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.xat button {
+    height: 1.5rem;
+    width: 5rem;
+    background-color: rgb(26,26,26);
+    color: #4fb8fe;
+    border: 1px solid #4fb8fe;
+    margin: .2rem 0;
+    border-radius: .3rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+
+@media (max-width: 375px){
+    .xat form {
+        margin: 20px 0 .1rem 0;
+    }
+    .messages {
+        height: 250px;
+    }
+    .messages img {
+        width: 200px;
+    }
+    .messages div, .messages > div {
+        height: 250px;
+    }
+}

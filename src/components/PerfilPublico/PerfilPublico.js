@@ -35,6 +35,7 @@ class perfilPublico extends Component {
         const friendsArrStr = this.props.loggedInUser.friends.map(friend => {
             return friend.toString()
         })
+        console.log(friendsArrStr)
         if(!friendsArrStr.includes(this.state.userProfile._id.toString()) && this.props.loggedInUser._id.toString() !== this.state.userProfile._id.toString()){
             return(
                 <button onClick={(e) => this.addFriend(e)}>Añadir amistad</button>
