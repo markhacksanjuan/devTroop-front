@@ -12,11 +12,12 @@ import Footer from './components/Footer/Footer'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Verification from './components/Verification/Verification'
-import PoolDoubt from './components/PoolDoubts/PoolDoubts'
+import PoolDoubts from './components/PoolDoubts/PoolDoubts'
 import Message from './components/Message/Message'
 import Perfil from './components/Perfil/Perfil'
 import PerfilPublico from './components/PerfilPublico/PerfilPublico'
 import EditProfileForm from './components/EditProfileForm/EditProfileForm'
+import EditDoubtForm from './components/EditDoubtForm/EditDoubtForm'
 
 class App extends Component {
 
@@ -24,7 +25,8 @@ class App extends Component {
     super(props)
     this.state = {
       loggedInUser: null,
-      publicProfileId: ''
+      publicProfileId: '',
+      selectedDoubt: ''
     }
     this.service = new AuthService()
   }
@@ -56,6 +58,11 @@ class App extends Component {
       publicProfileId: id
     })
   }
+  getDoubtToApp = (doubt) => {
+    this.setState({
+      selectedDoubt: doubt
+    })
+  }
   changeAvatar = (avatarUrl) => {
     const copyUser = {...this.state.loggedInUser, imgPath:avatarUrl}
     this.setState({
@@ -65,6 +72,14 @@ class App extends Component {
   changeUserInfo = (userInfo) => {
     const copyUser = {...this.state.loggedInUser, name: userInfo.name, lastName: userInfo.lastName}
     this.setState({ loggedInUser: copyUser})
+  }
+
+  updateFriends = (id) => {
+    const copyUser = {...this.state.loggedInUser}
+    const newFriendsArr = copyUser.friends.filter(friend => {
+      return friend.toString() !== id.toString()
+    })
+    this.setState({ loggedInUser: copyUser })
   }
 
   render(){
@@ -81,7 +96,10 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route exact path='/pool' render={() => {
               return (
-                <PoolDoubt loggedInUser={this.state.loggedInUser} />
+                <PoolDoubts 
+                loggedInUser={this.state.loggedInUser} 
+                  getDoubtToApp={this.getDoubtToApp}
+                />
               )
             }} />
               <Route exact path='/message' render={() => {
@@ -102,6 +120,7 @@ class App extends Component {
                   <PerfilPublico 
                   loggedInUser={this.state.loggedInUser}
                   publicProfileId={this.state.publicProfileId}
+                  updateFriends={this.updateFriends}
                    />
                 )
               }} />
@@ -114,6 +133,13 @@ class App extends Component {
                   />
                 )
               }} />
+              <Route exact path='/editDoubt' render={() => {
+                        return(
+                            <EditDoubtForm 
+                              selectedDoubt={this.state.selectedDoubt[0]}
+                            />
+                        )
+                    }} />
           </Switch>
           <Footer
           userInSession={this.state.loggedInUser}
@@ -142,7 +168,13 @@ class App extends Component {
               )
               }} />
               <Route exact path='/verification' component={Verification} />
-              <Route exact path='/pool' component={PoolDoubt} />
+              <Route exact path='/pool' render={() => {
+              return (
+                <PoolDoubts 
+                  getDoubtToApp={this.getDoubtToApp}
+                />
+              )
+            }} />
           </Switch>
           <Footer
           userInSession={this.state.loggedInUser}

@@ -13,7 +13,7 @@
     background-color: rgb(26,26,26);
     width: 8rem;
     height: 1rem;
-    margin: 1.1rem 0;
+    margin: 1.1rem 1rem;
     padding: .9rem;
     border-radius: .3rem;
     text-decoration: none;
@@ -28,9 +28,13 @@
 }
 .home-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+.home h4 {
+    margin: 2rem 0;
 }
 
 /* --- MEDIA QUERY FOR IPHONE 5 */

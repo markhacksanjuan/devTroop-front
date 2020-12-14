@@ -3,8 +3,8 @@ import axios from 'axios'
 class DoubtService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://devtroop.herokuapp.com/doubt',
-            // baseURL: 'http://localhost:3000/doubt'
+            // baseURL: 'https://devtroop.herokuapp.com/doubt',
+            baseURL: 'http://localhost:3000/doubt'
         })
         this.service = service
     }
@@ -48,8 +48,8 @@ class DoubtService {
         .then(response => response.data)
         .catch(err => console.error(err))
     }
-    createAnswer = (answer, doubtId) => {
-        return this.service.post(`/answer/create/${doubtId}`, {answer})
+    createAnswer = (answer, doubtId, userId) => {
+        return this.service.post(`/answer/create/${doubtId}`, {answer, userId})
         .then(response => response.data)
         .catch(err => console.error(err))
     }

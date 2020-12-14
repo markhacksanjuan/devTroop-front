@@ -6,5 +6,8 @@
 }
 
 @media (max-width: 375px){
-
+    .message {
+        flex-direction: column;
+        justify-content: center;
+    }
 }

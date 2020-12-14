@@ -8,10 +8,11 @@ const searchDoubt = (props) => {
     }
     return(
         <div>
-            <label>Buscar duda:</label>
             <input
             type='search'
             onChange={(e) => onInputChange(e)}
+            autoComplete='off'
+            placeholder='Buscar duda'
             />
         </div>
     )

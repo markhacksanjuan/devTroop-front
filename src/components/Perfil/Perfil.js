@@ -27,7 +27,7 @@ class Perfil extends Component {
             searchDiv: false,
             dudas: false,
             friendsList: false,
-            info: true,
+            info: false,
         }
         this.service = new UserService()
         this.messageService = new MessageService()

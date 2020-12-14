@@ -3,8 +3,8 @@ import axios from 'axios'
 class UserService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://devtroop.herokuapp.com/user',
-            // baseURL: 'http://localhost:3000/user'
+            // baseURL: 'https://devtroop.herokuapp.com/user',
+            baseURL: 'http://localhost:3000/user'
         })
         this.service = service
     }
@@ -44,6 +44,12 @@ class UserService {
     }
     editUser = (userId, name, lastName) => {
         return this.service.post('editUser', {userId, name, lastName})
+        .then(response => {
+            return response.data
+        })
+    }
+    deleteFriend = (userId, friendId) => {
+        return this.service.post('/deleteFriend', {userId, friendId})
         .then(response => {
             return response.data
         })

@@ -1,5 +1,5 @@
 .answers {
-    height: 250px;
+    height: 300px;
 }
 .answers ul {
     list-style: none;
@@ -7,4 +7,19 @@
 .answers h3 {
     color:#4fb8fe;
     margin: 2rem 0 0 0;
+}
+.answers > div {
+    height: 200px;
+}
+.answers a {
+    font-size: .7rem;
+    margin: 0 0 0 .5rem;
+    text-decoration: none;
+    color: #4fb8fe;
+}
+.answers a:hover {
+    color: #8ad0ff;
+}
+.answers li {
+    margin: 1rem 0;
 }

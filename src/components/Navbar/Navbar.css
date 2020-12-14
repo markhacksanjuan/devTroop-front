@@ -3,7 +3,7 @@
     height: 55px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     padding: 0 5%;
     border-bottom: 1px solid white
@@ -40,5 +40,10 @@
 @media (max-width: 320px){
     .navbar {
         width: 100%;
+    }
+}
+@media (max-width: 375px){
+    .navbar {
+        justify-content: space-evenly;
     }
 }

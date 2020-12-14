@@ -1,0 +1,15 @@
+.perfil-publico {
+
+}
+.perfil-publico img {
+    border-radius: 50%;
+    margin: 1rem;
+    width: 200px;
+}
+
+@media (max-width: 375px) {
+    .perfil-publico img {
+        width: 200px;
+
+    }
+}

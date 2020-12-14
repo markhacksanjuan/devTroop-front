@@ -8,11 +8,12 @@ const SearchFriend = (props) => {
 
     return(
         <div>
-            <label>Encuentra tus amigos: </label>
             <input
             id='input-search-friend'
             type='search'
             onChange={(e) => onInputChange(e)}
+            autoComplete='off'
+            placeholder='Encuentra a tus amigos'
             />
         </div>
     )

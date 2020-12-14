@@ -9,12 +9,13 @@
 .doubt-answers {
     display: flex;
     flex-direction: column;
+    align-items:center;
 }
 .pool-doubts {
     height: 100%;
 
 }
-.pool-doubts > button {
+.pool-button {
     height: 2.5rem;
     width: 13rem;
     background-color: rgb(26,26,26);
@@ -25,13 +26,14 @@
     cursor: pointer;
     font-weight: 700;
 }
-.pool-doubts > button:hover {
+.pool-button:hover {
     color: #8ad0ff;
     background-color: rgb(70,70,70);
 }
 .container-doubt-answer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     
 }
 

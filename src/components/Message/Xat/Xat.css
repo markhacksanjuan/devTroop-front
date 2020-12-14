@@ -1,6 +1,7 @@
 .xat {
     display:flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .xat li img {
@@ -22,7 +23,7 @@
     margin: 0 auto;
 }
 .xat button {
-    height: 1.5rem;
+    height: 1.9rem;
     width: 5rem;
     background-color: rgb(26,26,26);
     color: #4fb8fe;
@@ -32,6 +33,7 @@
     cursor: pointer;
     font-weight: 700;
 }
+
 
 
 @media (max-width: 375px){
@@ -46,5 +48,9 @@
     }
     .messages div, .messages > div {
         height: 250px;
+    }
+    .input-xat {
+        width: 250px;
+        height: 25px;
     }
 }

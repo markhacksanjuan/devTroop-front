@@ -12,6 +12,8 @@ import Answers from './Answers/Answers'
 import NewDoubt from './NewDoubt/NewDoubt'
 import Loading from '../Loading/Loading'
 import SearchDoubt from './SearchDoubt/SearchDoubt'
+import NewAnswer from './NewAnswer/NewAnswer'
+import EditDoubtForm from '../EditDoubtForm/EditDoubtForm'
 
 class PoolDoubts extends Component {
 
@@ -23,6 +25,9 @@ class PoolDoubts extends Component {
             doubtUser: '',
             doubtAnswers: '',
             showForm: false,
+            showFormAnswer: false,
+            doubtsSearch: []
+
         }
         this.service = new DoubtService()
     }
@@ -32,7 +37,8 @@ class PoolDoubts extends Component {
         .getAllDoubts()
         .then(response => {
             this.setState({
-                doubts: response
+                doubts: response,
+                doubtsSearch: response,
             })
         })
     }
@@ -42,24 +48,40 @@ class PoolDoubts extends Component {
             return doubt._id === id
         })
         this.service.getAllAnswersOfDoubt(selectedDoubt[0]._id)
-            .then(answers => {
-                console.log(answers)
-                this.setState({
-                    selectedDoubt,
-                    doubtAnswers: answers
-                })
-
+        .then(answers => {
+            this.setState({
+                selectedDoubt,
+                doubtAnswers: answers
             })
+            
+        })
+        this.props.getDoubtToApp(selectedDoubt)
     }
 
     showFormToggle = (e) => {
         e.preventDefault()
         this.state.showForm ? this.setState({showForm: false}) : this.setState({showForm: true})
     }
+    showFormAnswerToggle = (e) => {
+        e.preventDefault()
+        this.state.showFormAnswer ? this.setState({showFormAnswer: false}) : this.setState({showFormAnswer: true})
+    }
 
     search = (value) => {
-
+        const copyDoubts = [...this.state.doubtsSearch]
+        const valueLower = value.toLowerCase()
+        const newArr = copyDoubts.filter(item => {
+            const newName = item.title.toLowerCase()
+            return newName.includes(valueLower)
+        })
+        this.setState({
+            doubts: newArr
+        })
+        if(value === ''){
+            this.setState({ doubts: copyDoubts })
+        }
     }
+    
 
 
 
@@ -68,12 +90,13 @@ class PoolDoubts extends Component {
             <div className='pool-doubts'>
                 <h1>¡Hey! ¿Tienes alguna duda?</h1>
                 {this.props.loggedInUser && 
-                <button onClick={(e) => this.showFormToggle(e)}>Crea tu duda</button>
+                <button className='pool-button' onClick={(e) => this.showFormToggle(e)}>Crea tu duda</button>
                 }
                     <NewDoubt
                         show={this.state.showForm}
                         loggedInUser={this.props.loggedInUser}
                     />
+                    
                     <div className='container-doubt-answer'>
                         <div className='doubts'>
                         <SearchDoubt
@@ -90,7 +113,20 @@ class PoolDoubts extends Component {
                             />}
                         {this.state.doubtAnswers === '' ? null : <Answers 
                                 doubtAnswers={this.state.doubtAnswers}
+                                loggedInUser={this.props.loggedInUser}
+                                getDoubt={this.getDoubt}
+                                selectedDoubt={this.state.selectedDoubt[0]}
                             />}
+                <NewAnswer 
+                    show={this.state.showFormAnswer}
+                    loggedInUser={this.props.loggedInUser}
+                    selectedDoubt={this.state.selectedDoubt[0]}
+                    getDoubt={this.getDoubt}
+                    showFormAnswerToggle={this.showFormAnswerToggle}
+                />
+                            {(this.props.loggedInUser && this.state.doubtAnswers !== '') &&
+                <button className='pool-button' onClick={(e) => this.showFormAnswerToggle(e)}>Responde a la duda</button>
+                }
                         </div>
 
 
