@@ -79,7 +79,7 @@ class Perfil extends Component {
     renderSearchFriends = () => {
             return this.state.searchFriends.map((friend, index) => {
                 return (
-                    <Link key={index} to={`/profile/${friend._id}`} onClick={() => this.props.getProfilePublicId(friend._id)}>{friend.name} {friend.lastName}</Link>
+                    <Link key={index} to={`/profile/${friend._id}`} onClick={() => this.props.getProfilePublicId(friend._id)}><img src={friend.imgPath} /> {friend.name} {friend.lastName}</Link>
                 )
             })
     }
@@ -133,7 +133,7 @@ class Perfil extends Component {
                         searchFriends={this.searchFriends}
                         searchDiv={this.state.searchDiv}
                         />
-                        <div>
+                        <div className='search-friends'>
 
                             {this.state.searchDiv && this.renderSearchFriends()}
                         </div>

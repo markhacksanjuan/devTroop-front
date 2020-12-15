@@ -3,8 +3,8 @@ import axios from 'axios'
 class UserService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://devtroop.herokuapp.com/user',
-            // baseURL: 'http://localhost:3000/user'
+            // baseURL: 'https://devtroop.herokuapp.com/user',
+            baseURL: 'http://localhost:3000/user'
         })
         this.service = service
     }
@@ -25,7 +25,11 @@ class UserService {
         return this.service.get('/allUsers')
         .then(response => {
             const users = response.data.map(user => {
-                return {_id: user._id, name: user.name, lastName: user.lastName}
+                return {
+                    _id: user._id,
+                    name: user.name,
+                    lastName: user.lastName,
+                    imgPath: user.imgPath}
             })
             return  users
         })

@@ -19,6 +19,7 @@ import Perfil from './components/Perfil/Perfil'
 import PerfilPublico from './components/PerfilPublico/PerfilPublico'
 import EditProfileForm from './components/EditProfileForm/EditProfileForm'
 import EditDoubtForm from './components/EditDoubtForm/EditDoubtForm'
+import FormResendEmail from './components/FormResendEmail/FormResendEmail'
 
 // --- PROTECTED COMPONENT ---
 import ProtectedRoute from './auth/ProtectedRoute'
@@ -172,6 +173,7 @@ class App extends Component {
   
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/resendEmail' component={FormResendEmail} />
             <Route exact path='/signup' render={() => {
               return(
                 <Signup getUser={this.getTheUser} />
