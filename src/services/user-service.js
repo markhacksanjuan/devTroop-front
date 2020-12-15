@@ -54,6 +54,13 @@ class UserService {
             return response.data
         })
     }
+
+    verificateUser = (email, token) => {
+        return this.service.get(`/confirmation/${email}/${token}`)
+        .then(response => {
+            return response.data
+        })
+    }
 }
 
 export default UserService

@@ -7,12 +7,13 @@ import UserService from '../../services/user-service'
 import MessageService from '../../services/message-service'
 import DoubtService from '../../services/doubt-services'
 
-
 // --- COMPONENTS ---
 import Friends from './Friends/Friends'
 import Doubts from './Doubts/Doubts'
 import SearchFriend from './SearchFriend/SearchFriend'
 import Info from './Info/Info'
+import Answers from '../PoolDoubts/Answers/Answers'
+import OneDoubt from '../PoolDoubts/OneDoubt/OneDoubt'
 import Loading from '../Loading/Loading'
 
 
@@ -28,6 +29,8 @@ class Perfil extends Component {
             dudas: false,
             friendsList: true,
             info: true,
+            selectedDoubt: '',
+            doubtAnswers: ''
         }
         this.service = new UserService()
         this.messageService = new MessageService()
@@ -80,7 +83,6 @@ class Perfil extends Component {
                 )
             })
     }
-
     showToggle = (e) => {
         console.log(e.target.id)
         this.state[e.target.id] ? this.setState({ [e.target.id]:false }) : this.setState({ [e.target.id]:true })
@@ -88,6 +90,20 @@ class Perfil extends Component {
     getProfilePublicIdFromFriends = (id) => {
         return this.props.getProfilePublicId(id)
     }
+    getDoubt = (id) => {
+        const selectedDoubt = this.state.doubts.filter(doubt => {
+            return doubt._id === id
+        })
+        this.doubtService
+            .getAllAnswersOfDoubt(selectedDoubt[0]._id)
+            .then(answers => {
+                this.setState({
+                    selectedDoubt,
+                    doubtAnswers: answers
+                })
+            })
+    }
+
 
     render(){
 
@@ -130,9 +146,20 @@ class Perfil extends Component {
 
                     </div>
 
-                    {this.state.dudas && <Doubts 
+                    {this.state.dudas && <Doubts
+                    getDoubt={this.getDoubt} 
                     doubts={this.state.doubts} />
                     }
+                    {(this.state.selectedDoubt && this.state.dudas) && <OneDoubt 
+                        selectedDoubt={this.state.selectedDoubt[0]}
+                        loggedInUser={this.props.loggedInUser}
+                    />}
+                    {(this.state.doubtAnswers && this.state.dudas) && <Answers 
+                        loggedInUser={this.props.loggedInUser}
+                        doubtAnswers={this.state.doubtAnswers}
+                        getDoubt={this.getDoubt}
+                        selectedDoubt={this.state.selectedDoubt[0]}
+                    />}
                  
                         
                 </div>

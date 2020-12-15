@@ -10,8 +10,8 @@ const info = (props) => {
             <p>Email: {props.loggedInUser.email}</p>
             <p>Ciudad: {props.loggedInUser.city}</p>
             <p>Curso de Ironhack: {props.loggedInUser.ironhackCourse}</p>
-            <a href={props.loggedInUser.githubUrl} target='_blank'>Perfil de GitHub</a>
-            <a href={props.loggedInUser.linkedinUrl} target='_blank'>Perfil de Linkedin</a>
+            <a href={props.loggedInUser.githubUrl} target='_blank'>Ver mi perfil de GitHub</a>
+            <a href={props.loggedInUser.linkedinUrl} target='_blank'>Ver mi perfil de Linkedin</a>
             <Link to='/editProfile'>Modificar información</Link>
         </div>
     )

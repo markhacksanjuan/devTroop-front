@@ -28,7 +28,11 @@ class perfilPublico extends Component {
             <div>
                 <img src={this.state.userProfile.imgPath} />
                 <h1>{this.state.userProfile.name} {this.state.userProfile.lastName}</h1>
-                <p>email: {this.state.userProfile.email}</p>
+                <p>Email: {this.state.userProfile.email}</p>
+                <p>Ciudad: {this.state.userProfile.city}</p>
+                <p>Curso de Ironhack: {this.state.userProfile.ironhackCourse}</p>
+                <p>GitHub: {this.state.userProfile.githubUrl && <a href={this.state.userProfile.githubUrl} target='_blank'>Ver perfil</a>}</p>
+                <p>Linkedin: {this.state.userProfile.linkedinUrl && <a href={this.state.userProfile.linkedinUrl} target='_blank'>Ver perfil</a>}</p>
                 {this.renderButtonFriendship()}
                 {this.renderButtonDeleteFriend()}
             </div>

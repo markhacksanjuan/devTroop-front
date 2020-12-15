@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer'
 import Signup from './components/Signup/Signup'
 import Login from './components/Login/Login'
 import Verification from './components/Verification/Verification'
+import Verificating from './components/Verificating/Verificating'
 import PoolDoubts from './components/PoolDoubts/PoolDoubts'
 import Message from './components/Message/Message'
 import Perfil from './components/Perfil/Perfil'
@@ -182,6 +183,7 @@ class App extends Component {
               )
               }} />
               <Route exact path='/verification' component={Verification} />
+              <Route exact path='/user/confirmation/:email/:token' component={Verificating} />
               <Route exact path='/pool' render={() => {
               return (
                 <PoolDoubts 
