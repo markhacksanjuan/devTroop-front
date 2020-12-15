@@ -6,6 +6,9 @@
     margin: 1rem;
     width: 200px;
 }
+.perfil-publico span {
+    color: black;
+}
 
 @media (max-width: 375px) {
     .perfil-publico img {

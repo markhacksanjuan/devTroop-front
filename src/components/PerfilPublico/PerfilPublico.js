@@ -20,6 +20,7 @@ class perfilPublico extends Component {
                 this.setState({
                     userProfile: response
                 })
+                this.isFriendToggle()
             })
     }
     renderProfile = () => {
@@ -27,11 +28,11 @@ class perfilPublico extends Component {
             <div>
                 <img src={this.state.userProfile.imgPath} />
                 <h1>{this.state.userProfile.name} {this.state.userProfile.lastName}</h1>
-                <p>Email: {this.state.userProfile.email}</p>
-                <p>Ciudad: {this.state.userProfile.city}</p>
-                <p>Curso de Ironhack: {this.state.userProfile.ironhackCourse}</p>
-                <p>GitHub: {this.state.userProfile.githubUrl && <a href={this.state.userProfile.githubUrl} target='_blank'>Ver perfil</a>}</p>
-                <p>Linkedin: {this.state.userProfile.linkedinUrl && <a href={this.state.userProfile.linkedinUrl} target='_blank'>Ver perfil</a>}</p>
+                <p><span>Email: </span> {this.state.userProfile.email}</p>
+                <p><span>Ciudad: </span> {this.state.userProfile.city}</p>
+                <p><span>Curso de Ironhack: </span>{this.state.userProfile.ironhackCourse}</p>
+                <p><span>GitHub: </span>{this.state.userProfile.githubUrl && <a href={this.state.userProfile.githubUrl} target='_blank'>Ver perfil</a>}</p>
+                <p><span>Linkedin: </span>{this.state.userProfile.linkedinUrl && <a href={this.state.userProfile.linkedinUrl} target='_blank'>Ver perfil</a>}</p>
                 {
                     this.state.isFriend
                     ? this.renderButtonDeleteFriend()
@@ -41,12 +42,11 @@ class perfilPublico extends Component {
         )
     }
     isFriendToggle = () => {
-        const friendsArrStr = this.props.loggedInUser.friends
         
-        if(friendsArrStr.includes(this.state.userProfile._id) && this.props.loggedInUser._id !== this.state.userProfile._id){
-            this.setState({isFriend: false})
-        }else {
+        if(this.props.loggedInUser.friends.includes(this.state.userProfile._id) && this.props.loggedInUser._id !== this.state.userProfile._id){
             this.setState({isFriend: true})
+        }else {
+            this.setState({isFriend: false})
         }
     }
     renderButtonFriendship = () => {

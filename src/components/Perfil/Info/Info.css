@@ -6,6 +6,9 @@
     text-align: left;
     margin: 0 0 1.5rem 0;
 }
+.profile-info span {
+    color: black;
+}
 .profile-info a {
     text-align: center;
     background-color: rgb(26,26,26);
