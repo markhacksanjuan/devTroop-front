@@ -8,8 +8,8 @@ class Login extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
-
+            password: '',
+            message: ''
         }
         this.service = new AuthService()
     }
@@ -20,12 +20,19 @@ class Login extends Component {
         
         this.service.login(email, password)
         .then( response => {
-            this.setState({
-                email: '',
-                password: ''
-            })
-            this.props.getUser(response)
-            this.props.history.push('/profile')
+            if(response){
+                console.log(response)
+                if(!response.message){
+                    this.setState({
+                        email: '',
+                        password: ''
+                    })
+                    this.props.getUser(response)
+                    this.props.history.push('/profile')
+                }else {
+                    this.setState({ message: response.message })
+                }
+            }
         })
         .catch( err => console.error(err) )
     }
@@ -43,8 +50,10 @@ class Login extends Component {
                 <form onSubmit={this.handleFormSubmit}>
                     <label>Email:</label>
                     <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
-                    <label>Password:</label>
+                    <label>Contraseña:</label>
                     <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
+
+                    { this.state.message && <p className='errorMessage'>{this.state.message}</p> }
 
                     <button type='submit'>Login</button>
                 </form>

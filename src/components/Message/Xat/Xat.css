@@ -33,6 +33,15 @@
     cursor: pointer;
     font-weight: 700;
 }
+.xat input {
+    height: 1.5rem;
+    border: 1px solid #4fb8fe;
+    margin: 0 .5rem 0 0;
+    border-radius: .3rem;
+}
+.messages img {
+    width: 200px;
+}
 
 
 

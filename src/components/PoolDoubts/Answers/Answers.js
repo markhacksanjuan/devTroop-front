@@ -22,7 +22,7 @@ class Answers extends Component{
         return(
             this.props.loggedInUser._id.toString() !== userId.toString()
             ? console.log('hola')
-            : <Link onClick={() => this.deleteAnswer(id)}>eliminar</Link>
+            : <Link to='#' onClick={() => this.deleteAnswer(id)}>eliminar</Link>
             )
     }
     deleteAnswer = (id) => {
@@ -44,7 +44,7 @@ class Answers extends Component{
 
     render(){
         return(
-            <div class="answers">
+            <div className="answers">
                 <h3>Respuestas</h3>
                 <Scrollbars style={{ width: 300, heigth: 50}} autoHeight>
                     <ul>

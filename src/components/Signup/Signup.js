@@ -10,7 +10,8 @@ class Signup extends Component {
             name: '',
             lastName: '',
             email: '',
-            password: ''
+            password: '',
+            errorMessage:''
 
         }
         this.service = new AuthService()
@@ -22,14 +23,20 @@ class Signup extends Component {
         
         this.service.signup(name, lastName, email, password)
         .then( response => {
-            console.log(response)
-            this.setState({
-                name: '',
-                lastName: '',
-                email: '',
-                password: ''
-            })
-            this.props.history.push('/verification')
+            if(response){
+                console.log(response)
+                if(!response.errorMessage){
+                    this.setState({
+                        name: '',
+                        lastName: '',
+                        email: '',
+                        password: ''
+                    })
+                    this.props.history.push('/verification')
+                }else {
+                    this.setState({ errorMessage: response.errorMessage })
+                }
+            }
         })
         .catch( err => console.error(err) )
     }
@@ -51,8 +58,10 @@ class Signup extends Component {
                     <input type='text' name='lastName' value={this.state.lastName} onChange={ e => this.handleChange(e) } />
                     <label>Email:</label>
                     <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
-                    <label>Password:</label>
+                    <label>Contraseña:</label>
                     <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
+
+                { this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p> }
 
                     <button type='submit'>Regístrate</button>
                 </form>

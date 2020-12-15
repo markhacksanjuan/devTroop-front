@@ -69,7 +69,7 @@ class Xat extends Component {
                     </Scrollbars>
                 </div>
                 <form onSubmit={this.handleFormSubmit}>
-                    <input className='input-xat' name='newMessage' value={this.state.newMessage} onChange={ e => this.handleChange(e)} autocomplete='off' placeholder='Escribe tu mensaje' autofocus />
+                    <input className='input-xat' name='newMessage' value={this.state.newMessage} onChange={ e => this.handleChange(e)} autoComplete='off' placeholder='Escribe tu mensaje' autoFocus />
                     <button type='submit'>Enviar</button>
     
                 </form>

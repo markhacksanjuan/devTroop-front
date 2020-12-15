@@ -13,6 +13,7 @@ class perfilPublico extends Component {
     }
 
     componentDidMount = () => {
+        console.log(this.props)
         this.userService
             .getUser(this.props.publicProfileId)
             .then(response => {

@@ -19,6 +19,10 @@ import PerfilPublico from './components/PerfilPublico/PerfilPublico'
 import EditProfileForm from './components/EditProfileForm/EditProfileForm'
 import EditDoubtForm from './components/EditDoubtForm/EditDoubtForm'
 
+// --- PROTECTED COMPONENT ---
+import ProtectedRoute from './auth/ProtectedRoute'
+
+
 class App extends Component {
 
   constructor(props){
@@ -70,7 +74,14 @@ class App extends Component {
     })
   }
   changeUserInfo = (userInfo) => {
-    const copyUser = {...this.state.loggedInUser, name: userInfo.name, lastName: userInfo.lastName}
+    const copyUser = {...this.state.loggedInUser, 
+      name: userInfo.name, 
+      lastName: userInfo.lastName,
+      city: userInfo.city,
+      githubUrl: userInfo.githubUrl,
+      ironhackCourse: userInfo.ironhackCourse,
+      linkedinUrl: userInfo.linkedinUrl
+    }
     this.setState({ loggedInUser: copyUser})
   }
 
@@ -102,44 +113,47 @@ class App extends Component {
                 />
               )
             }} />
-              <Route exact path='/message' render={() => {
-                return (
-                  <Message loggedInUser={this.state.loggedInUser} />
-                )
+              <ProtectedRoute 
+              exact 
+              path='/message'
+              user={this.state.loggedInUser} 
+              
+              component={Message}
+
+              />
+              <ProtectedRoute 
+              exact 
+              path='/profile' 
+              user={this.state.loggedInUser}
+              component={Perfil}
+              getProfilePublicId={this.getProfilePublicId}
+              
+              />
+              <ProtectedRoute 
+              exact 
+              path='/profile/:id'
+              user={this.state.loggedInUser}
+              component={PerfilPublico}
+              publicProfileId={this.state.publicProfileId}
+              updateFriends={this.updateFriends}
+              />
+              <ProtectedRoute 
+              exact 
+              path='/editProfile'
+              user={this.state.loggedInUser}
+              component={EditProfileForm}
+              changeAvatar={this.changeAvatar}
+              changeUserInfo={this.changeUserInfo}
+              render={() => {
               }} />
-              <Route exact path='/profile' render={() => {
-                return (
-                  <Perfil 
-                    loggedInUser={this.state.loggedInUser} 
-                    getProfilePublicId={this.getProfilePublicId}
-                  />
-                )
-              }} />
-              <Route exact path='/profile/:id' render={() => {
-                return (
-                  <PerfilPublico 
-                  loggedInUser={this.state.loggedInUser}
-                  publicProfileId={this.state.publicProfileId}
-                  updateFriends={this.updateFriends}
-                   />
-                )
-              }} />
-              <Route exact path='/editProfile' render={() => {
-                return (
-                  <EditProfileForm 
-                    loggedInUser={this.state.loggedInUser}
-                    changeAvatar={this.changeAvatar}
-                    changeUserInfo={this.changeUserInfo}
-                  />
-                )
-              }} />
-              <Route exact path='/editDoubt' render={() => {
-                        return(
-                            <EditDoubtForm 
-                              selectedDoubt={this.state.selectedDoubt[0]}
-                            />
-                        )
-                    }} />
+              <ProtectedRoute 
+              exact 
+              path='/editDoubt'
+              user={this.state.loggedInUser}
+              component={EditDoubtForm}
+              changeAvatar={this.changeAvatar}
+              selectedDoubt={this.state.selectedDoubt[0]}
+               />
           </Switch>
           <Footer
           userInSession={this.state.loggedInUser}
@@ -175,6 +189,67 @@ class App extends Component {
                 />
               )
             }} />
+
+
+            <ProtectedRoute 
+              exact 
+              path='/message'
+              user={this.state.loggedInUser} 
+              render={() => {
+                return (
+                  <Message loggedInUser={this.state.loggedInUser} />
+                )
+              }} />
+              <ProtectedRoute 
+              exact 
+              path='/profile' 
+              user={this.state.loggedInUser}
+              render={() => {
+                return (
+                  <Perfil 
+                    loggedInUser={this.state.loggedInUser} 
+                    getProfilePublicId={this.getProfilePublicId}
+                  />
+                )
+              }} />
+              <ProtectedRoute 
+              exact 
+              path='/profile/:id'
+              user={this.state.loggedInUser}
+              render={() => {
+                return (
+                  <PerfilPublico 
+                  loggedInUser={this.state.loggedInUser}
+                  publicProfileId={this.state.publicProfileId}
+                  updateFriends={this.updateFriends}
+                   />
+                )
+              }} />
+              <ProtectedRoute 
+              exact 
+              path='/editProfile'
+              user={this.state.loggedInUser} 
+              render={() => {
+                return (
+                  <EditProfileForm 
+                    loggedInUser={this.state.loggedInUser}
+                    changeAvatar={this.changeAvatar}
+                    changeUserInfo={this.changeUserInfo}
+                  />
+                )
+              }} />
+              <ProtectedRoute 
+              exact 
+              path='/editDoubt'
+              user={this.state.loggedInUser} 
+              render={() => {
+                        return(
+                            <EditDoubtForm 
+                              selectedDoubt={this.state.selectedDoubt[0]}
+                            />
+                        )
+                    }} />
+
           </Switch>
           <Footer
           userInSession={this.state.loggedInUser}

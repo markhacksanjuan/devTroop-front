@@ -7,8 +7,13 @@ class EditProfileForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            lastName: '',
+                name: '',
+                lastName: '',
+                city: '',
+                ironhackCourse: '',
+                githubUrl: '',
+                linkedinUrl: '',
+
             showAvatarForm: false,
             avatarUrl:'',
             selectedAvatar: null,
@@ -17,16 +22,25 @@ class EditProfileForm extends Component {
     }
     componentDidMount = () => {
         this.setState({
-            name: this.props.loggedInUser.name,
-            lastName: this.props.loggedInUser.lastName
+       
+                name: this.props.loggedInUser.name,
+                lastName: this.props.loggedInUser.lastName,
+                city: this.props.loggedInUser.city,
+                ironhackCourse: this.props.loggedInUser.ironhackCourse,
+                githubUrl: this.props.loggedInUser.githubUrl,
+                linkedinUrl: this.props.loggedInUser.linkedinUrl
+            
         })
     }
 
     handleFormSubmit = (e) => {
         e.preventDefault()
-        const { name, lastName } = this.state
-        this.userService.editUser(this.props.loggedInUser._id, name, lastName)
+        const { name, lastName, city, ironhackCourse, githubUrl, linkedinUrl } = this.state
+        const editedUser = { name, lastName, city, ironhackCourse, githubUrl, linkedinUrl}
+        console.log(editedUser)
+        this.userService.editUser(this.props.loggedInUser._id, editedUser)
         .then((response) => {
+            console.log(response)
             this.props.changeUserInfo(response)
         })
         .catch(err => {
@@ -71,7 +85,7 @@ class EditProfileForm extends Component {
 
     handleChange = (e) => {
         const { name, value } = e.target
-        this.setState({ [name]: value })
+        this.setState({[name]: value })
     }
 
     render(){
@@ -81,11 +95,21 @@ class EditProfileForm extends Component {
                 <img src={this.props.loggedInUser.imgPath} />
                 <button onClick={this.showAvatarFormToggle}>Modificar foto</button>
                 {this.state.showAvatarForm && this.renderAvatarForm()}
-                <form onSubmit={this.handleFormSubmit}>
+
+                <form className='edit-info-profile' onSubmit={this.handleFormSubmit}>
                     <label>Nombre:</label>
                     <input name='name' value={this.state.name} onChange={e => this.handleChange(e)} />
                     <label>Apellido:</label>
                     <input name='lastName' value={this.state.lastName} onChange={e => this.handleChange(e)} />
+                    <label>Ciudad:</label>
+                    <input name='city' value={this.state.city} onChange={e => this.handleChange(e)} />
+                    <label>Curso de Ironhack:</label>
+                    <input name='ironhackCourse' value={this.state.ironhackCourse} onChange={e => this.handleChange(e)} />
+                    <label>Perfil de GitHub:</label>
+                    <input name='githubUrl' value={this.state.githubUrl} onChange={e => this.handleChange(e)} />
+                    <label>Perfil de Linkedin:</label>
+                    <input name='linkedinUrl' value={this.state.linkedinUrl} onChange={e => this.handleChange(e)} />
+
 
                     <button type='submit'>Modificar</button>
                 </form>

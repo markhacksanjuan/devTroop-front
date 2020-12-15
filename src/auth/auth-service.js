@@ -3,8 +3,8 @@ import axios from 'axios'
 class AuthService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://devtroop.herokuapp.com/auth',
-            // baseURL: 'http://localhost:3000/auth',
+            // baseURL: 'https://devtroop.herokuapp.com/auth',
+            baseURL: 'http://localhost:3000/auth',
             withCredentials: true
         })
         this.service = service
@@ -13,7 +13,10 @@ class AuthService {
 
     signup = (name, lastName, email, password) => {
         return this.service.post('/signup', {name, lastName, email, password})
-        .then(response =>  response.data)
+        .then(response => {
+            console.log(response)
+            return response.data
+        })
         .catch(err => console.error(err))
     }
 

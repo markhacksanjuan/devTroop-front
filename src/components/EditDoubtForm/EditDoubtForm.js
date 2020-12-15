@@ -14,7 +14,7 @@ class EditDoubtForm extends Component {
         this.doubtService = new DoubtService()
     }
 
-    componentDidMount = () => {
+    componentDidMount = (props) => {
         this.setState({
             selectedDoubt: this.props.selectedDoubt,
             title: this.props.selectedDoubt.title,
@@ -46,9 +46,17 @@ class EditDoubtForm extends Component {
                 <h3>Editar Duda</h3>
                 <form onSubmit={(e) => this.handleOnSubmit(e)} >
                     <label>Título:</label>
-                    <input name='title' onChange={(e) => this.handleOnChange(e)} value={this.state.title} />
+                    {
+                    this.state.title
+                    ? <input name='title' onChange={(e) => this.handleOnChange(e)} value={this.state.title} />
+                    : null
+                    }
                     <label>Duda: </label>
-                    <textarea name='doubt' onChange={(e) => this.handleOnChange(e)} value={this.state.doubt}></textarea>
+                    {
+                    this.state.doubt
+                    ? <textarea name='doubt' onChange={(e) => this.handleOnChange(e)} value={this.state.doubt}></textarea>
+                    : null
+                    }
 
                     <button type='submit'>Modificar duda</button>
                 </form>
