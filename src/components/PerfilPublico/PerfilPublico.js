@@ -8,7 +8,7 @@ class perfilPublico extends Component {
         super(props)
         this.state = {
             userProfile: '',
-            isFriend: false,
+            isFriend: true,
         }
         this.userService = new UserService()
     }
@@ -20,7 +20,7 @@ class perfilPublico extends Component {
                 this.setState({
                     userProfile: response
                 })
-                this.isFriendToggle()
+                this.isFriendToggle(this.props.loggedInUser.friends, response._id)
             })
     }
     renderProfile = () => {
@@ -41,12 +41,17 @@ class perfilPublico extends Component {
             </div>
         )
     }
-    isFriendToggle = () => {
-        
-        if(this.props.loggedInUser.friends.includes(this.state.userProfile._id) && this.props.loggedInUser._id !== this.state.userProfile._id){
+    isFriendToggle = (arr, profileId) => {
+
+        const isFriend = arr.filter(friend => {
+            return friend._id === profileId
+        })
+        if(isFriend.length > 0){
             this.setState({isFriend: true})
+            return
         }else {
             this.setState({isFriend: false})
+            return
         }
     }
     renderButtonFriendship = () => {
