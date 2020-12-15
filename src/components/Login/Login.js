@@ -56,6 +56,7 @@ class Login extends Component {
                     { this.state.message && <p className='errorMessage'>{this.state.message}</p> }
 
                     <button type='submit'>Login</button>
+                    <p>¿Has olvidado tu contraseña? <Link to='/resetPwdToken'>Recuperar contraseña</Link></p>
                 </form>
                 <p>
                     ¿Aún no formas parte de devTroop? <Link to={'/signup'}>¡Regístrate!</Link>

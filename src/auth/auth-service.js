@@ -46,7 +46,19 @@ class AuthService {
         return this.service.post('/resend', {email})
         .then(response => response.data)
     }
-
+    
+    resetPwdToken = (email) => {
+        return this.service.post('/resetPwd', {email})
+        .then(response => response.data)
+    }
+    checkUserToken = (email, token) => {
+        return this.service.post('/resetPwd/check', {email, token})
+        .then(response => response.data)
+    }
+    resetPwdNewPwd = (email, newPassword) => {
+        return this.service.post('/resetPwd/newPwd', {email, newPassword})
+        .then(response => response.data)
+    }
 
 }
 

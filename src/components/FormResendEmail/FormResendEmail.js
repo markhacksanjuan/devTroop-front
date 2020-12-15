@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import AuthService from '../../auth/auth-service'
 
@@ -20,7 +21,10 @@ class FormResendEmail extends Component {
             .then(response => {
                 if(response.errorMessage){
                     this.setState({errorMessage: response.errorMessage})
+                    return
                 }
+                this.setState({email: ''})
+                this.props.history.push('/verification')
             })
             .catch(err => console.log(err))
 
@@ -46,4 +50,4 @@ class FormResendEmail extends Component {
         )
     }
 }
-export default FormResendEmail
+export default withRouter(FormResendEmail)

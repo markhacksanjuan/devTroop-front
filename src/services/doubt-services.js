@@ -6,7 +6,7 @@ class DoubtService {
             baseURL: 'https://devtroop.herokuapp.com/doubt',
             // baseURL: 'http://localhost:3000/doubt'
         })
-        this.service = service
+        this.service = servicea
     }
 
     newDoubt = (title, doubt, userId) => {

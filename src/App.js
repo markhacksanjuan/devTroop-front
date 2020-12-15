@@ -20,6 +20,8 @@ import PerfilPublico from './components/PerfilPublico/PerfilPublico'
 import EditProfileForm from './components/EditProfileForm/EditProfileForm'
 import EditDoubtForm from './components/EditDoubtForm/EditDoubtForm'
 import FormResendEmail from './components/FormResendEmail/FormResendEmail'
+import FormResetPwd from './components/FormResetPwd/FormResetPwd'
+import FormNewPwd from './components/FormNewPwd/FormNewPwd'
 
 // --- PROTECTED COMPONENT ---
 import ProtectedRoute from './auth/ProtectedRoute'
@@ -174,6 +176,8 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/resendEmail' component={FormResendEmail} />
+            <Route exact path='/resetPwdToken' component={FormResetPwd} />
+            <Route exact path='/resetPwdTokenForm/:email/:token' component={FormNewPwd} />
             <Route exact path='/signup' render={() => {
               return(
                 <Signup getUser={this.getTheUser} />
