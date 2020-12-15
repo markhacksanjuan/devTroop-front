@@ -7,17 +7,16 @@ class perfilPublico extends Component {
     constructor(props){
         super(props)
         this.state = {
-            userProfile: ''
+            userProfile: '',
+            isFriend: false,
         }
         this.userService = new UserService()
     }
 
     componentDidMount = () => {
-        console.log(this.props)
         this.userService
             .getUser(this.props.publicProfileId)
             .then(response => {
-                console.log(response)
                 this.setState({
                     userProfile: response
                 })
@@ -33,34 +32,35 @@ class perfilPublico extends Component {
                 <p>Curso de Ironhack: {this.state.userProfile.ironhackCourse}</p>
                 <p>GitHub: {this.state.userProfile.githubUrl && <a href={this.state.userProfile.githubUrl} target='_blank'>Ver perfil</a>}</p>
                 <p>Linkedin: {this.state.userProfile.linkedinUrl && <a href={this.state.userProfile.linkedinUrl} target='_blank'>Ver perfil</a>}</p>
-                {this.renderButtonFriendship()}
-                {this.renderButtonDeleteFriend()}
+                {
+                    this.state.isFriend
+                    ? this.renderButtonDeleteFriend()
+                    : this.renderButtonFriendship()
+                }
             </div>
         )
     }
+    isFriendToggle = () => {
+        const friendsArrStr = this.props.loggedInUser.friends
+        
+        if(friendsArrStr.includes(this.state.userProfile._id) && this.props.loggedInUser._id !== this.state.userProfile._id){
+            this.setState({isFriend: false})
+        }else {
+            this.setState({isFriend: true})
+        }
+    }
     renderButtonFriendship = () => {
-        const friendsArrStr = this.props.loggedInUser.friends.map(friend => {
-            return friend.toString()
-        })
-        if(!friendsArrStr.includes(this.state.userProfile._id.toString()) && this.props.loggedInUser._id.toString() !== this.state.userProfile._id.toString()){
+        
             return(
                 <button onClick={(e) => this.addFriend(e)}>Añadir amistad</button>
             )
-        }else {
-            return null
-        }
+
     }
     renderButtonDeleteFriend = () => {
-        const friendsArrStr = this.props.loggedInUser.friends.map(friend => {
-            return friend.toString()
-        })
-        if(friendsArrStr.includes(this.state.userProfile._id.toString()) && this.props.loggedInUser._id.toString() !== this.state.userProfile._id.toString()){
             return(
                 <button onClick={(e) => this.deleteFriend(e)}>Eliminar amistad</button>
             )
-        }else {
-            return null
-        }
+        
     }
 
     addFriend = (e) => {
