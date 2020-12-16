@@ -8,7 +8,7 @@ class perfilPublico extends Component {
         super(props)
         this.state = {
             userProfile: '',
-            isFriend: true,
+            loggedInUser: ''
         }
         this.userService = new UserService()
     }
@@ -18,11 +18,13 @@ class perfilPublico extends Component {
             .getUser(this.props.publicProfileId)
             .then(response => {
                 this.setState({
-                    userProfile: response
+                    userProfile: response,
+                    loggedInUser: this.props.loggedInUser
                 })
                 this.isFriendToggle(this.props.loggedInUser.friends, response._id)
             })
     }
+
     renderProfile = () => {
         return (
             <div>
@@ -42,7 +44,6 @@ class perfilPublico extends Component {
         )
     }
     isFriendToggle = (arr, profileId) => {
-
         const isFriend = arr.filter(friend => {
             return friend._id === profileId
         })
@@ -73,7 +74,8 @@ class perfilPublico extends Component {
         this.userService
             .addFriend(this.props.loggedInUser._id, this.state.userProfile._id)
             .then(response => {
-                this.setState({addedFriend: true})
+                this.props.updateFriendsAdd(this.state.userProfile)
+                this.setState({isFriend: true})
             })
     }
     deleteFriend = (e) => {
@@ -81,8 +83,8 @@ class perfilPublico extends Component {
         this.userService
             .deleteFriend(this.props.loggedInUser._id, this.state.userProfile._id)
             .then(response => {
-                this.props.updateFriends(response)
-                this.setState({deletedFriend: true})
+                this.props.updateFriendsDelete(this.state.userProfile)
+                this.setState({isFriend: false})
             })
 
     }

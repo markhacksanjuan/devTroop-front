@@ -89,11 +89,17 @@ class App extends Component {
     this.setState({ loggedInUser: copyUser})
   }
 
-  updateFriends = (id) => {
+  updateFriendsAdd = (user) => {
     const copyUser = {...this.state.loggedInUser}
-    const newFriendsArr = copyUser.friends.filter(friend => {
-      return friend.toString() !== id.toString()
-    })
+    
+    copyUser.friends.push(user)
+    this.setState({ loggedInUser: copyUser })
+  }
+
+  updateFriendsDelete = (user) => {
+    const copyUser = {...this.state.loggedInUser}
+    
+    copyUser.friends.splice(copyUser.friends.indexOf(user), 1)
     this.setState({ loggedInUser: copyUser })
   }
 
@@ -139,7 +145,9 @@ class App extends Component {
               user={this.state.loggedInUser}
               component={PerfilPublico}
               publicProfileId={this.state.publicProfileId}
-              updateFriends={this.updateFriends}
+              updateFriendsAdd={this.updateFriendsAdd}
+              updateFriendsDelete={this.updateFriendsDelete}
+              fetchUser={this.fetchUser}
               />
               <ProtectedRoute 
               exact 

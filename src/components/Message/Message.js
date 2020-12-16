@@ -38,6 +38,13 @@ class Message extends Component {
             })
         })
     }
+    getXat = (id) => {
+        this.messageService
+            .getAll(id)
+            .then(result => {
+                // this.getXatById(this.state.toUser)
+            })
+    }
     getXatById = (id) => {
         const toUser = this.state.friends.filter(item => {
             return item._id === id
@@ -95,6 +102,9 @@ class Message extends Component {
                             loggedInUser={this.props.loggedInUser}
                             createNewMessage={this.createNewMessage}
                             xat={this.state.xat}
+                            getXat={this.getXat}
+                            getXatById={this.getXatById}
+                            allMessages={this.state.allMessages}
                         />}
                         
                     </div>

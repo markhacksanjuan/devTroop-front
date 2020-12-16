@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import './Xat.css'
 
@@ -16,7 +16,7 @@ class Xat extends Component {
             xat: [],
             toUser: '',
         }
-        this.MessageService = new MessageService()
+        this.messageService = new MessageService()
         this.scrollbars = React.createRef()
     }
 
@@ -24,11 +24,32 @@ class Xat extends Component {
         this.setState({
             toUser: this.props.toUser,
             xat: this.props.xat,
+            allMessages: this.props.allMessages
         })
+        this.timer = setInterval(this.updateXat, 4000)
+    }
+
+    updateXat = () => {
+        if(this.props.toUser){
+            this.messageService
+                .getAll(this.props.loggedInUser._id)
+                .then((messages) => {
+                    const messagesArr = messages.filter(message => {
+                        return message.toUserId === this.props.toUser._id || message.fromUserId._id === this.props.toUser._id
+                    })
+                    this.setState({
+                        xat: messagesArr
+                    })
+                    console.log(this.state.xat)
+                })
+        }
     }
 
     componentDidUpdate = () => {
         this.scrollbars.current.scrollToBottom()
+    }
+    componentWillUnmount = () => {
+        clearInterval(this.timer)
     }
 
     handleFormSubmit = (event) => {
@@ -47,7 +68,7 @@ class Xat extends Component {
 
 
     renderXat = () => {
-        const xat = [...this.props.xat]
+        const xat = [...this.state.xat]
             return xat.map((message,index) => {
                 return <li key={index}><img src={message.fromUserId.imgPath} /> - {message.message}</li>
         })
