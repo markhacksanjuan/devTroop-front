@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Perfil.css'
 
 // --- SERVICES ---
@@ -14,7 +14,6 @@ import SearchFriend from './SearchFriend/SearchFriend'
 import Info from './Info/Info'
 import Answers from '../PoolDoubts/Answers/Answers'
 import OneDoubt from '../PoolDoubts/OneDoubt/OneDoubt'
-import Loading from '../Loading/Loading'
 
 
 class Perfil extends Component {
@@ -79,12 +78,11 @@ class Perfil extends Component {
     renderSearchFriends = () => {
             return this.state.searchFriends.map((friend, index) => {
                 return (
-                    <Link key={index} to={`/profile/${friend._id}`} onClick={() => this.props.getProfilePublicId(friend._id)}><img src={friend.imgPath} /> {friend.name} {friend.lastName}</Link>
+                    <Link key={index} to={`/profile/${friend._id}`} onClick={() => this.props.getProfilePublicId(friend._id)}><img src={friend.imgPath} alt={friend.imgName} /> {friend.name} {friend.lastName}</Link>
                 )
             })
     }
     showToggle = (e) => {
-        console.log(e.target.id)
         this.state[e.target.id] ? this.setState({ [e.target.id]:false }) : this.setState({ [e.target.id]:true })
     }
     getProfilePublicIdFromFriends = (id) => {
@@ -110,7 +108,7 @@ class Perfil extends Component {
         return (
             <div className='perfil'>
                 <div className='perfil-head'>
-                    <img src={this.props.loggedInUser.imgPath} />
+                    <img src={this.props.loggedInUser.imgPath} alt={this.props.loggedInUser.imgName} />
                     <h1>¡Hola, {this.props.loggedInUser.name}!</h1>
                     
                     
@@ -121,6 +119,7 @@ class Perfil extends Component {
                         <Info 
                         loggedInUser={this.props.loggedInUser}
                         />}
+
                     <div className='friends-profile'>
                         
                         {this.state.friendsList && <Friends
@@ -133,23 +132,22 @@ class Perfil extends Component {
                         searchFriends={this.searchFriends}
                         searchDiv={this.state.searchDiv}
                         />
-                        <div className='search-friends'>
 
+                        <div className='search-friends'>
                             {this.state.searchDiv && this.renderSearchFriends()}
                         </div>
 
                     </div>
+
                     <div className='perfil-links'>
                         <Link to='#' id='dudas' onClick={(e) => this.showToggle(e)}>Ver mis dudas</Link>
-                        {/* <Link id='friendsList' onClick={(e) => this.showToggle(e)}>Ver mis amigos</Link>
-                        <Link id='info' onClick={(e) => this.showToggle(e)}>Ver mi información</Link> */}
-
-                    </div>
 
                     {this.state.dudas && <Doubts
                     getDoubt={this.getDoubt} 
                     doubts={this.state.doubts} />
                     }
+                    </div>
+                    <div>
                     {(this.state.selectedDoubt && this.state.dudas) && <OneDoubt 
                         selectedDoubt={this.state.selectedDoubt[0]}
                         loggedInUser={this.props.loggedInUser}
@@ -160,6 +158,7 @@ class Perfil extends Component {
                         getDoubt={this.getDoubt}
                         selectedDoubt={this.state.selectedDoubt[0]}
                     />}
+                    </div>
                  
                         
                 </div>

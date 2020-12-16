@@ -33,6 +33,7 @@
 .container-doubt-answer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     
 }
@@ -45,5 +46,11 @@
     .pool-doubts h1 {
         text-align: center;
         width: 320px;
+    }
+}
+
+@media (max-width: 375px){
+    .pool-doubts {
+        height: 20%
     }
 }

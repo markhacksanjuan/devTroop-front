@@ -16,3 +16,17 @@
 
     }
 }
+.perfil-publico button {
+    background-color: rgb(26,26,26);
+    color: #4fb8fe;
+    border: 1px solid #4fb8fe;
+    margin: 1rem 0 0 0;
+    font-weight: 700;
+    width: 8rem;
+    height: 1.8rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+.perfil-publico button:hover {
+    background-color: rgb(70,70,70);
+}

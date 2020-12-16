@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import  { Link } from 'react-router-dom'
 import './Info.css'
 
@@ -10,8 +10,8 @@ const info = (props) => {
             <p><span>Email: </span>{props.loggedInUser.email}</p>
             <p><span>Ciudad: </span>{props.loggedInUser.city}</p>
             <p><span>Curso de Ironhack: </span>{props.loggedInUser.ironhackCourse}</p>
-            <a href={props.loggedInUser.githubUrl} target='_blank'>Ver mi perfil de GitHub</a>
-            <a href={props.loggedInUser.linkedinUrl} target='_blank'>Ver mi perfil de Linkedin</a>
+            <a href={props.loggedInUser.githubUrl} target='_blank' rel='noreferrer'>Ver mi perfil de GitHub</a>
+            <a href={props.loggedInUser.linkedinUrl} target='_blank' rel='noreferrer'>Ver mi perfil de Linkedin</a>
             <Link to='/editProfile'>Modificar información</Link>
         </div>
     )

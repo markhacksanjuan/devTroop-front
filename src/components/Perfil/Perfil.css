@@ -27,15 +27,20 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    margin: 1.3rem auto;
+    margin: 1.3rem 1rem;
 
 }
+.perfil-links {
+    margin: 0 2rem;
+}
 .perfil-links a {
-    display: block
+    display: block;
 }
 .perfil-body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 
 }
 .search-friends img {
@@ -58,9 +63,17 @@
 .search-friends a:hover {
     background-color: rgb(133, 133, 133);
 }
+.friends-profile {
+    margin: 0 1.5rem
+}
 
 @media (max-width: 375px) {
     .perfil-head > img {
         margin: 1rem 1rem;
+    }
+}
+@media (max-width: 693px) {
+    .friends-profile {
+        border-top: 1px solid white;
     }
 }

@@ -27,7 +27,6 @@ class FormNewPwd extends Component {
         this.service
         .resetPwdNewPwd(email, newPassword)
         .then(response => {
-            console.log(response)
             this.setState({newPassword: ''})
             if(response.errorMessage){
                 this.setState({errorMessage: response.errorMessage})

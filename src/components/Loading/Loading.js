@@ -4,7 +4,7 @@ import loadingImg from '../../img/devtroopbucle.gif'
 const loading = () => {
     return (
         <div>
-            <img src={loadingImg} />
+            <img src={loadingImg} alt='devtroop-loading' />
         </div>
     )
 }

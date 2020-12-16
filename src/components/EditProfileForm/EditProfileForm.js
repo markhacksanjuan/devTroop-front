@@ -37,10 +37,8 @@ class EditProfileForm extends Component {
         e.preventDefault()
         const { name, lastName, city, ironhackCourse, githubUrl, linkedinUrl } = this.state
         const editedUser = { name, lastName, city, ironhackCourse, githubUrl, linkedinUrl}
-        console.log(editedUser)
         this.userService.editUser(this.props.loggedInUser._id, editedUser)
         .then((response) => {
-            console.log(response)
             this.props.changeUserInfo(response)
         })
         .catch(err => {
@@ -78,7 +76,6 @@ class EditProfileForm extends Component {
         data.append('avatar', this.state.selectedAvatar)
         this.userService.editAvatar(data, this.props.loggedInUser._id)
             .then(response => {
-                console.log(response)
                 this.props.changeAvatar(response)
             })
     }
@@ -92,7 +89,7 @@ class EditProfileForm extends Component {
         return(
             <div className='edit-profile'>
                 <h2>Edit Profile Form</h2>
-                <img src={this.props.loggedInUser.imgPath} />
+                <img src={this.props.loggedInUser.imgPath} alt={this.props.loggedInUser.imgName} />
                 <button onClick={this.showAvatarFormToggle}>Modificar foto</button>
                 {this.state.showAvatarForm && this.renderAvatarForm()}
 

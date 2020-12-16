@@ -25,7 +25,8 @@
     border: 1px solid #4fb8fe
 }
 .new-answer textarea {
-    height: 1.5rem;
+    height: 3.5rem;
+    width: 15rem;
     border-radius: .3rem;
     border: 1px solid #4fb8fe
 }

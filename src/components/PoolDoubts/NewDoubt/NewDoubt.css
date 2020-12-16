@@ -12,19 +12,23 @@
     border: 1px solid rgb(26,26,26);
     border-radius: .5rem;
     padding: 1.3rem 0;
-    width: 20%
+    width: 30%;
+    margin-bottom: 1.5rem
 }
 .new-doubt label {
     margin: .5rem 0;
 }
 .new-doubt input {
     height: 1.5rem;
+    width: 15rem;
     border-radius: .3rem;
     border:1px solid #4fb8fe;
 }
 .new-doubt textarea {
     border-radius: .3rem;
     border: 1px solid #4fb8fe;
+    height: 3.5rem;
+    width: 15rem;
 }
 .new-doubt button {
     background-color: rgb(26,26,26);
@@ -42,8 +46,13 @@
     background-color: rgb(70,70,70);
 }
 
-@media (max-width: 375px) {
+@media (max-width: 800px) {
     .new-doubt form {
-        width: 70%
+        width: 80%;
+    }
+}
+@media (min-width: 801),(max-width: 1024) {
+    .new-doubt form {
+        width: 40%;
     }
 }

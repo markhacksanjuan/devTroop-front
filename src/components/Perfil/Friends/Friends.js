@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { Link } from 'react-router-dom'
 import './Friends.css'
@@ -11,7 +11,7 @@ const Friends = (props) => {
                 <Link key={index} to={`/profile/${friend._id}`} onClick={() => props.getProfilePublicIdFromFriends(friend._id)}>
                 <div className='card-friend'>
 
-                <img src={friend.imgPath} />
+                <img src={friend.imgPath} alt={friend.imgName} />
                 <p>
                   {friend.name} {friend.lastName}  
                 </p>

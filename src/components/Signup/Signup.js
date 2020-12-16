@@ -24,7 +24,6 @@ class Signup extends Component {
         this.service.signup(name, lastName, email, password)
         .then( response => {
             if(response){
-                console.log(response)
                 if(!response.errorMessage){
                     this.setState({
                         name: '',

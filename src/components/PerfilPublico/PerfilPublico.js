@@ -28,7 +28,7 @@ class perfilPublico extends Component {
     renderProfile = () => {
         return (
             <div>
-                <img src={this.state.userProfile.imgPath} />
+                <img src={this.state.userProfile.imgPath} alt={this.state.userProfile.imgName} />
                 <h1>{this.state.userProfile.name} {this.state.userProfile.lastName}</h1>
                 <p><span>Email: </span> {this.state.userProfile.email}</p>
                 <p><span>Ciudad: </span> {this.state.userProfile.city}</p>

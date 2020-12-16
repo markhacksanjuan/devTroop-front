@@ -21,7 +21,7 @@ class Answers extends Component{
     renderLink = (id, userId) => {
         return(
             this.props.loggedInUser._id.toString() !== userId.toString()
-            ? console.log('hola')
+            ? null
             : <Link to='#' onClick={() => this.deleteAnswer(id)}>eliminar</Link>
             )
     }

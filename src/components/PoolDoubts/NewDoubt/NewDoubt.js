@@ -9,6 +9,7 @@ class NewDoubt extends Component {
         this.state ={
             title: '',
             doubt: '',
+            errorMessage: '',
         }
         this.service = new DoubtService()
     }
@@ -22,10 +23,16 @@ class NewDoubt extends Component {
         this.service
             .newDoubt(this.state.title, this.state.doubt, this.props.loggedInUser)
             .then(response => {
+                if(response.errorMessage){
+                    this.setState({errorMessage: response.errorMessage})
+                    return
+                }
                 this.setState({
                     title: '',
                     doubt: ''
                 })
+                this.props.showFormToggle(e)
+                this.props.updateDoubts(response)
                 return
             })
     }
@@ -41,6 +48,7 @@ class NewDoubt extends Component {
                     <input name='title' onChange={this.handleChange} value={this.state.title} />
                     <label>Tu duda:</label>
                     <textarea name='doubt' onChange={this.handleChange} value={this.state.doubt} />
+                    {this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p>}
                     <button type='submit'>enviar duda</button>
                 </form>
     

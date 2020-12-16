@@ -33,7 +33,7 @@ class Navbar extends Component {
             return(
                 <div className='navbar'>
                         <Link to='/profile'>
-                        <img id="img-user" src={this.props.userInSession.imgPath} />
+                        <img id="img-user" src={this.props.userInSession.imgPath} alt={this.props.userInSession.imgName} />
                         </Link>
                         <Link to='/pool'>Dudas</Link>
                         <Link to='/message'>IronXat</Link>
@@ -44,7 +44,7 @@ class Navbar extends Component {
         }else {
             return(
                 <div className='navbar'>
-                        <Link to='/'><img id='img-devtroop' src={devTroop} /></Link>
+                        <Link to='/'><img id='img-devtroop' src={devTroop} alt='devTroop-logo' /></Link>
                         <Link to='/pool'>Dudas</Link>
                 </div>
             )

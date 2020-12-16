@@ -9,3 +9,9 @@
 .one-doubt a:hover {
     color: #8ad0ff
 }
+.one-doubt {
+    width: 80%
+}
+.one-doubt span {
+    color: black
+}

@@ -21,7 +21,6 @@ class Login extends Component {
         this.service.login(email, password)
         .then( response => {
             if(response){
-                console.log(response)
                 if(!response.message){
                     this.setState({
                         email: '',

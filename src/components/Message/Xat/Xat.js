@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 import './Xat.css'
 
@@ -40,7 +40,6 @@ class Xat extends Component {
                     this.setState({
                         xat: messagesArr
                     })
-                    console.log(this.state.xat)
                 })
         }
     }
@@ -70,7 +69,7 @@ class Xat extends Component {
     renderXat = () => {
         const xat = [...this.state.xat]
             return xat.map((message,index) => {
-                return <li key={index}><img src={message.fromUserId.imgPath} /> - {message.message}</li>
+                return <li key={index}><img src={message.fromUserId.imgPath} alt={message.fromUserId.imgName} /> - {message.message}</li>
         })
         
     }
@@ -90,7 +89,7 @@ class Xat extends Component {
                     </Scrollbars>
                 </div>
                 <form onSubmit={this.handleFormSubmit}>
-                    <input className='input-xat' name='newMessage' value={this.state.newMessage} onChange={ e => this.handleChange(e)} autoComplete='off' placeholder='Escribe tu mensaje' autoFocus />
+                    <input className='input-xat' name='newMessage' value={this.state.newMessage} onChange={ e => this.handleChange(e)} autoComplete='off' placeholder='Escribe tu mensaje' />
                     <button type='submit'>Enviar</button>
     
                 </form>

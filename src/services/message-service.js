@@ -10,7 +10,6 @@ class MessageService {
     }
 
     sendMessage = (message, toUserId, fromUserId) => {
-        console.log(message + ' toUser: ' + toUserId)
         return this.service.post(`/create/${toUserId}`, {message, fromUserId})
         .then(response => response.data)
     }

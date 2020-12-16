@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link, Switch, Route } from 'react-router-dom'
 import './PoolDoubts.css'
 
 // --- SERVICES ---
@@ -13,7 +12,6 @@ import NewDoubt from './NewDoubt/NewDoubt'
 import Loading from '../Loading/Loading'
 import SearchDoubt from './SearchDoubt/SearchDoubt'
 import NewAnswer from './NewAnswer/NewAnswer'
-import EditDoubtForm from '../EditDoubtForm/EditDoubtForm'
 
 class PoolDoubts extends Component {
 
@@ -81,7 +79,13 @@ class PoolDoubts extends Component {
             this.setState({ doubts: copyDoubts })
         }
     }
-    
+    updateDoubts = (doubt) => {
+        const copyDoubts = [...this.state.doubts]
+        copyDoubts.unshift(doubt)
+        this.setState({
+            doubts: copyDoubts
+        })
+    }
 
 
 
@@ -95,6 +99,8 @@ class PoolDoubts extends Component {
                     <NewDoubt
                         show={this.state.showForm}
                         loggedInUser={this.props.loggedInUser}
+                        showFormToggle={this.showFormToggle}
+                        updateDoubts={this.updateDoubts}
                     />
                     
                     <div className='container-doubt-answer'>
