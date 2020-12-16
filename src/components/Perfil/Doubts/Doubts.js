@@ -22,7 +22,7 @@ const Doubts = (props) => {
     }
 
     return (
-        <div>
+        <div className='doubt-list'>
             <Scrollbars style={{ width: 300, height: 200}}>
                 <ul>
                     {renderDoubts()}

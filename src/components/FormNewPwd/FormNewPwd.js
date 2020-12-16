@@ -27,11 +27,12 @@ class FormNewPwd extends Component {
         this.service
         .resetPwdNewPwd(email, newPassword)
         .then(response => {
+            console.log(response)
+            this.setState({newPassword: ''})
             if(response.errorMessage){
                 this.setState({errorMessage: response.errorMessage})
                 return
             }
-            this.setState({newPassword: ''})
             this.props.history.push('/login')
         })
         .catch(err => console.log(err))
@@ -43,13 +44,13 @@ class FormNewPwd extends Component {
 
     render = () => {
         return (
-            <div>
+            <div className='form-reset'>
             <h1>Nueva contraseña</h1>
                 <form onSubmit={e => this.handleFormSubmit(e)}>
                     <label name='newPassword'>Nueva contraseña: </label>
                     <input name='newPassword' onChange={e => this.handleChange(e)} value={this.state.newPassword} />
                     {this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p>}
-                    <button type='submit'>Modificar contraseña</button>
+                    <button type='submit'>Modificar</button>
                 </form>
             </div>
         )

@@ -1,0 +1,45 @@
+.new-answer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+.new-answer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(26,26,26);
+    border-radius: .5rem;
+    padding: 1.3rem 0;
+    margin-bottom: 1rem;
+    width: 300px;
+}
+.new-answer label {
+    margin: .5rem 0;
+}
+.new-answer input {
+    height: 1.5rem;
+    border-radius: .3rem;
+    border: 1px solid #4fb8fe
+}
+.new-answer textarea {
+    height: 1.5rem;
+    border-radius: .3rem;
+    border: 1px solid #4fb8fe
+}
+.new-answer button {
+    background-color: rgb(26,26,26);
+    color: #4fb8fe;
+    border: 1px solid #4fb8fe;
+    margin: 1rem 0 0 0;
+    font-weight: 700;
+    width: 8rem;
+    height: 1.8rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+.new-answer button:hover {
+    background-color: rgb(70,70,70);
+}

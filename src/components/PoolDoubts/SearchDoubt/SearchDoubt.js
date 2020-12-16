@@ -7,7 +7,7 @@ const searchDoubt = (props) => {
         props.search(e.target.value)
     }
     return(
-        <div>
+        <div className='search-doubt'>
             <input
             type='search'
             onChange={(e) => onInputChange(e)}

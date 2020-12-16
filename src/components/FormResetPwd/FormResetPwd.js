@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import './FormResetPwd.css'
 
 import AuthService from '../../auth/auth-service'
 
@@ -53,7 +54,7 @@ class FormResetPwd extends Component {
 
     render = () => {
         return (
-            <div>
+            <div className='form-reset'>
                 <h1>Obtener nueva contraseña</h1>
                 {this.state.showForm
                     ? this.renderForm()
