@@ -35,7 +35,12 @@ class Xat extends Component {
                 .getAll(this.props.loggedInUser._id)
                 .then((messages) => {
                     const messagesArr = messages.filter(message => {
-                        return message.toUserId === this.props.toUser._id || message.fromUserId._id === this.props.toUser._id
+                        if(!message.toUserId || !message.fromUserId){
+                            console.log(message.toUserId)
+                            return 
+                        }else {
+                            return message.toUserId === this.props.toUser._id || message.fromUserId._id === this.props.toUser._id
+                        }
                     })
                     this.setState({
                         xat: messagesArr

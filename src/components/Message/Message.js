@@ -49,10 +49,16 @@ class Message extends Component {
         const toUser = this.state.friends.filter(item => {
             return item._id === id
         })
+        this.setState({toUser: toUser[0]})
         const copyAllMessages = [...this.state.allMessages]
         const messagesArr = copyAllMessages.filter(message => {
-            return message.toUserId.toString() === toUser[0]._id.toString() || message.fromUserId._id.toString() === toUser[0]._id.toString()
+            if(!message.fromUserId || !message.toUserId){
+                return 
+            }else {
+                return message.toUserId === toUser[0]._id || message.fromUserId._id === toUser[0]._id
+            }
         })
+        console.log(toUser[0]._id)
         this.setState({
             xat: messagesArr,
             toUser: toUser[0]
