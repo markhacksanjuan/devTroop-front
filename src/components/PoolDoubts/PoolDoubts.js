@@ -81,7 +81,8 @@ class PoolDoubts extends Component {
     }
     updateDoubts = (doubt) => {
         const copyDoubts = [...this.state.doubts]
-        copyDoubts.unshift(doubt)
+        const copyNewDoubt = {...doubt, userId:this.props.loggedInUser}
+        copyDoubts.unshift(copyNewDoubt)
         this.setState({
             doubts: copyDoubts
         })

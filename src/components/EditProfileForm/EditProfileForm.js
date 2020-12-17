@@ -94,7 +94,9 @@ class EditProfileForm extends Component {
                 <h2>Edit Profile Form</h2>
                 <img src={this.props.loggedInUser.imgPath} alt={this.props.loggedInUser.imgName} />
                 <button onClick={this.showAvatarFormToggle}>Modificar foto</button>
+                <div className='edit-avatar'>
                 {this.state.showAvatarForm && this.renderAvatarForm()}
+                </div>
 
                 <form className='edit-info-profile' onSubmit={this.handleFormSubmit}>
                     <label>Nombre:</label>

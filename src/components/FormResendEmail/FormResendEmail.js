@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import './FormResendEmail.css'
 
 import AuthService from '../../auth/auth-service'
 
@@ -37,7 +38,7 @@ class FormResendEmail extends Component {
 
     render = () => {
         return (
-            <div>
+            <div className='resend-token'>
             <h1>Resend token</h1>
             <form onSubmit={e => this.handleFormSubmit(e)} >
                 <label name='email'>Email: </label>
