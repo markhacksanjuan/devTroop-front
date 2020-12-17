@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './EditProfileForm.css'
 
 import UserService from '../../services/user-service'
@@ -40,6 +41,8 @@ class EditProfileForm extends Component {
         this.userService.editUser(this.props.loggedInUser._id, editedUser)
         .then((response) => {
             this.props.changeUserInfo(response)
+            this.props.history.push('/profile')
+
         })
         .catch(err => {
             console.error(err)
@@ -115,4 +118,4 @@ class EditProfileForm extends Component {
     }
 }
 
-export default EditProfileForm
+export default withRouter(EditProfileForm)
