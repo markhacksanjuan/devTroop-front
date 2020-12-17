@@ -3,11 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(26,26,26);
-    border-radius: .5rem;
-    width: 30%;
-    padding: 1.3rem 0;
-    margin: 1rem 0 0 0;
+
 }
 .edit-doubt-form form{
     display: flex;
@@ -16,7 +12,7 @@
     justify-content: center;
     border: 1px solid rgb(26,26,26);
     border-radius: .5rem;
-    width: 20%;
+    width: 30%;
     padding: 1.3rem 0;
 }
 .edit-doubt-form label {
@@ -40,4 +36,10 @@
 }
 .edit-doubt-form button:hover {
     background-color: rgb(70,70,70);
+}
+.edit-doubt-form textarea {
+    height: 3.5rem;
+    width: 15rem;
+    border-radius: .3rem;
+    border: 1px solid #4fb8fe
 }
