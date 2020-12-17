@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import './EditDoubtForm.css'
 
 import DoubtService from '../../services/doubt-services'
 
@@ -42,7 +43,7 @@ class EditDoubtForm extends Component {
 
     render(){
         return(
-            <div>
+            <div className='edit-doubt-form'>
                 <h3>Editar Duda</h3>
                 <form onSubmit={(e) => this.handleOnSubmit(e)} >
                     <label>Título:</label>
