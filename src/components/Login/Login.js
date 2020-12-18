@@ -47,10 +47,8 @@ class Login extends Component {
             <div className='login'>
                 <h1>Login</h1>
                 <form onSubmit={this.handleFormSubmit}>
-                    <label>Email:</label>
-                    <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
-                    <label>Contraseña:</label>
-                    <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
+                    <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } placeholder='Correo electrónico' />
+                    <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } placeholder='Contraseña' />
 
                     { this.state.message && <p className='errorMessage'>{this.state.message}</p> }
 

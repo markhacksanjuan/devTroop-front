@@ -41,8 +41,7 @@ class FormResendEmail extends Component {
             <div className='resend-token'>
             <h1>Resend token</h1>
             <form onSubmit={e => this.handleFormSubmit(e)} >
-                <label name='email'>Email: </label>
-                <input name='email' onChange={e => this.handleChange(e)} value={this.state.email} />
+                <input name='email' onChange={e => this.handleChange(e)} value={this.state.email} placeholder='Correo electrónico' />
                     {this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p>}
                 <button type='submit'>Enviar</button>
             </form>

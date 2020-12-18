@@ -46,10 +46,9 @@ class EditDoubtForm extends Component {
             <div className='edit-doubt-form'>
                 <h3>Editar Duda</h3>
                 <form onSubmit={(e) => this.handleOnSubmit(e)} >
-                    <label>Título:</label>
                     {
                     this.state.title
-                    ? <input name='title' onChange={(e) => this.handleOnChange(e)} value={this.state.title} />
+                    ? <input name='title' onChange={(e) => this.handleOnChange(e)} value={this.state.title} placeholder='Titulo de la duda' />
                     : null
                     }
                     <label>Duda: </label>

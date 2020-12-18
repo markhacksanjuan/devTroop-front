@@ -44,8 +44,7 @@ class NewDoubt extends Component {
         return (
             <div className='new-doubt'>
                 <form onSubmit={(e) => this.createDoubt(e)}>
-                    <label>Título: </label>
-                    <input name='title' onChange={this.handleChange} value={this.state.title} />
+                    <input name='title' onChange={this.handleChange} value={this.state.title} placeholder='Título de la duda' />
                     <label>Tu duda:</label>
                     <textarea name='doubt' onChange={this.handleChange} value={this.state.doubt} />
                     {this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p>}

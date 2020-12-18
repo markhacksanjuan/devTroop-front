@@ -46,8 +46,7 @@ class FormNewPwd extends Component {
             <div className='form-reset'>
             <h1>Nueva contraseña</h1>
                 <form onSubmit={e => this.handleFormSubmit(e)}>
-                    <label name='newPassword'>Nueva contraseña: </label>
-                    <input name='newPassword' onChange={e => this.handleChange(e)} value={this.state.newPassword} />
+                    <input name='newPassword' onChange={e => this.handleChange(e)} value={this.state.newPassword} placeholder='Nueva contraseña' />
                     {this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p>}
                     <button type='submit'>Modificar</button>
                 </form>

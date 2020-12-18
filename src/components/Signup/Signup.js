@@ -52,16 +52,11 @@ class Signup extends Component {
             <div className='login'>
                 <h1>Regístrate</h1>
                 <form onSubmit={this.handleFormSubmit}>
-                    <label>Nombre:</label>
-                    <input type='text' name='name' value={this.state.name} onChange={ e => this.handleChange(e) } />
-                    <label>Apellido:</label>
-                    <input type='text' name='lastName' value={this.state.lastName} onChange={ e => this.handleChange(e) } />
-                    <label>Email:</label>
-                    <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
-                    <label>Repite el email:</label>
-                    <input type='text' name='email2' value={this.state.email2} onChange={ e => this.handleChange(e) } />
-                    <label>Contraseña:</label>
-                    <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
+                    <input type='text' name='name' value={this.state.name} onChange={ e => this.handleChange(e) } autoComplete='off' placeholder='Nombre' />
+                    <input type='text' name='lastName' value={this.state.lastName} onChange={ e => this.handleChange(e) } autoComplete='off' placeholder='Apellido' />
+                    <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } autoComplete='off' placeholder='Correo electrónico' />
+                    <input type='text' name='email2' value={this.state.email2} onChange={ e => this.handleChange(e) } autoComplete='off' placeholder='Repite el correo'  />
+                    <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } placeholder='Contraseña' />
 
                 { this.state.errorMessage && <p className='errorMessage'>{this.state.errorMessage}</p> }
 
