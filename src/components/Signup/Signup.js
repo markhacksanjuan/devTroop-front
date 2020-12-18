@@ -10,6 +10,7 @@ class Signup extends Component {
             name: '',
             lastName: '',
             email: '',
+            email2: '',
             password: '',
             errorMessage:''
 
@@ -19,9 +20,9 @@ class Signup extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault()
-        const { name, lastName, email, password } = this.state
+        const { name, lastName, email, password, email2 } = this.state
         
-        this.service.signup(name, lastName, email, password)
+        this.service.signup(name, lastName, email, password, email2)
         .then( response => {
             if(response){
                 if(!response.errorMessage){
@@ -57,6 +58,8 @@ class Signup extends Component {
                     <input type='text' name='lastName' value={this.state.lastName} onChange={ e => this.handleChange(e) } />
                     <label>Email:</label>
                     <input type='text' name='email' value={this.state.email} onChange={ e => this.handleChange(e) } />
+                    <label>Repite el email:</label>
+                    <input type='text' name='email2' value={this.state.email2} onChange={ e => this.handleChange(e) } />
                     <label>Contraseña:</label>
                     <input type='password' name='password' value={this.state.password} onChange={ e => this.handleChange(e) } />
 
