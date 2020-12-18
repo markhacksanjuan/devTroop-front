@@ -54,7 +54,7 @@ class Login extends Component {
 
                     <button type='submit'>Login</button>
                 </form>
-                    <p>¿Has olvidado tu contraseña? <Link to='/resetPwdToken'>Recuperar contraseña</Link></p>
+                    <p><Link to='/resetPwdToken'>¿Has olvidado la contraseña?</Link></p>
                 <p>
                     ¿Aún no formas parte de devTroop? <Link to={'/signup'}>¡Regístrate!</Link>
                 </p>
