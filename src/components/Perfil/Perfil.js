@@ -92,6 +92,7 @@ class Perfil extends Component {
         const selectedDoubt = this.state.doubts.filter(doubt => {
             return doubt._id === id
         })
+        this.props.getDoubtToApp(selectedDoubt)
         this.doubtService
             .getAllAnswersOfDoubt(selectedDoubt[0]._id)
             .then(answers => {

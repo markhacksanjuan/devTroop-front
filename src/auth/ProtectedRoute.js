@@ -13,6 +13,7 @@ const protectedRoute = ({
     updateFriendsAdd,
     updateFriendsDelete,
     fetchUser,
+    getDoubtToApp,
 
      ...rest}) => {
     return (
@@ -30,6 +31,7 @@ const protectedRoute = ({
                 updateFriendsAdd={updateFriendsAdd}
                 updateFriendsDelete={updateFriendsDelete}
                 fetchUser={fetchUser}
+                getDoubtToApp={getDoubtToApp}
                 />
             }else {
                 return <Redirect to={{pathname: '/', state: {from: props.location}}} />

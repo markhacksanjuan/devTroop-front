@@ -137,6 +137,7 @@ class App extends Component {
               user={this.state.loggedInUser}
               component={Perfil}
               getProfilePublicId={this.getProfilePublicId}
+              getDoubtToApp={this.getDoubtToApp}
               
               />
               <ProtectedRoute 
